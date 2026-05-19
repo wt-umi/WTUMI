@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WTUMI</title>
+  <meta name="description" content="" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Sentinel: triggers when scrolled past first 80vh -->
+  <div id="nav-trigger" aria-hidden="true"></div>
+
+  <!-- ======================= FLOATING NAV ======================= -->
+  <nav class="floating-nav" aria-label="Page sections">
+    <a class="nav-item" href="#capabilities" data-section="capabilities">
+      <span class="nav-text">Capabilities</span>
+      <span class="nav-dot" aria-hidden="true"></span>
+    </a>
+    <a class="nav-item" href="#generalization" data-section="generalization">
+      <span class="nav-text">Generalization</span>
+      <span class="nav-dot" aria-hidden="true"></span>
+    </a>
+    <a class="nav-item" href="#data-collection" data-section="data-collection">
+      <span class="nav-text">Data Collection</span>
+      <span class="nav-dot" aria-hidden="true"></span>
+    </a>
+    <a class="nav-item" href="#abstract" data-section="abstract">
+      <span class="nav-text">Abstract</span>
+      <span class="nav-dot" aria-hidden="true"></span>
+    </a>
+    <a class="nav-item" href="#bibtex" data-section="bibtex">
+      <span class="nav-text">Cite</span>
+      <span class="nav-dot" aria-hidden="true"></span>
+    </a>
+  </nav>
+
+  <!-- ======================= HERO ======================= -->
+  <section id="hero" class="hero">
+    <!-- Drop a background video src here when ready -->
+    <video class="hero-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true"></video>
+    <div class="hero-overlay" aria-hidden="true"></div>
+
+    <div class="hero-content">
+      <h1 class="hero-headline">WTUMI</h1>
+      <p class="hero-subtitle">
+        WT-UMI: Whole-Body Tactile UMI for Force-Supervised Humanoid Manipulation
+      </p>
+
+      <p class="hero-authors">
+        <!-- Add author entries here, e.g.:
+        <a class="hero-author" href="#"><span class="hero-author-name">Author Name</span><span class="hero-author-star">*</span></a>,
+        -->
+      </p>
+
+      <p class="hero-footnote"><span class="hero-footnote-star">*</span> Equal Contribution</p>
+
+      <div class="hero-buttons">
+        <a class="hero-btn" href="#" target="_blank" rel="noopener">
+          <svg class="hero-btn-icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2 2 7l10 5 10-5-10-5Zm0 14L4 12v3l8 4 8-4v-3l-8 4Z"/></svg>
+          Arxiv
+        </a>
+        <a class="hero-btn" href="#" target="_blank" rel="noopener">
+          <svg class="hero-btn-icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6 2a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6H6Zm8 1.5L18.5 8H14V3.5ZM8 13h2.5a1.5 1.5 0 0 1 0 3H9v2H8v-5Zm1 1v1h1.5a.5.5 0 0 0 0-1H9Zm4-1h2.2c.99 0 1.8.81 1.8 1.8v1.4c0 .99-.81 1.8-1.8 1.8H13v-5Zm1 1v3h1.2a.8.8 0 0 0 .8-.8v-1.4a.8.8 0 0 0-.8-.8H14Z"/></svg>
+          Paper
+        </a>
+        <a class="hero-btn hero-btn-disabled" href="#" aria-disabled="true" onclick="event.preventDefault()">
+          <svg class="hero-btn-icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2A10 10 0 0 0 8.84 21.5c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.04 1.53 1.04.89 1.53 2.34 1.09 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.56 9.56 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2Z"/></svg>
+          Code (Coming Soon)
+        </a>
+        <a class="hero-btn" href="#" target="_blank" rel="noopener">
+          <svg class="hero-btn-icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2C7 2 3 3.34 3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5c0-1.66-4-3-9-3Zm0 2c4.42 0 7 1.12 7 1s-2.58 1-7 1-7-1.12-7-1 2.58-1 7-1Zm-7 4.27c1.69.85 4.27 1.23 7 1.23s5.31-.38 7-1.23v3c-1.69.85-4.27 1.23-7 1.23s-5.31-.38-7-1.23v-3Zm0 5.5c1.69.85 4.27 1.23 7 1.23s5.31-.38 7-1.23v3c-1.69.85-4.27 1.23-7 1.23s-5.31-.38-7-1.23v-3Z"/></svg>
+          Dataset
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= CAPABILITIES ======================= -->
+  <section id="capabilities" class="panel">
+    <div class="panel-inner">
+      <h2 class="section-title">Whole-Body Capabilities</h2>
+      <div class="cap-grid">
+        <article class="cap-card">
+          <div class="cap-video media-placeholder" aria-label="Video placeholder"></div>
+          <div class="cap-foot">
+            <span class="cap-title">Capability 1</span>
+            <button class="cap-next" type="button">Next ▸</button>
+          </div>
+        </article>
+        <article class="cap-card">
+          <div class="cap-video media-placeholder" aria-label="Video placeholder"></div>
+          <div class="cap-foot">
+            <span class="cap-title">Capability 2</span>
+            <button class="cap-next" type="button">Next ▸</button>
+          </div>
+        </article>
+        <article class="cap-card">
+          <div class="cap-video media-placeholder" aria-label="Video placeholder"></div>
+          <div class="cap-foot">
+            <span class="cap-title">Capability 3</span>
+            <button class="cap-next" type="button">Next ▸</button>
+          </div>
+        </article>
+        <article class="cap-card">
+          <div class="cap-video media-placeholder" aria-label="Video placeholder"></div>
+          <div class="cap-foot">
+            <span class="cap-title">Capability 4</span>
+            <button class="cap-next" type="button">Next ▸</button>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= GENERALIZATION (carousel) ======================= -->
+  <section id="generalization" class="panel">
+    <div class="panel-inner">
+      <h2 class="section-title">In-the-Wild Generalization</h2>
+
+      <div class="carousel" id="gen-carousel">
+        <button class="carousel-arrow carousel-prev" type="button" aria-label="Previous">‹</button>
+        <div class="carousel-track">
+          <article class="env-card">
+            <div class="env-video media-placeholder" aria-label="Video placeholder"></div>
+            <div class="env-foot">
+              <span class="env-name">Environment 1</span>
+              <button class="env-next" type="button">Next ▸</button>
+            </div>
+          </article>
+          <article class="env-card">
+            <div class="env-video media-placeholder" aria-label="Video placeholder"></div>
+            <div class="env-foot">
+              <span class="env-name">Environment 2</span>
+              <button class="env-next" type="button">Next ▸</button>
+            </div>
+          </article>
+          <article class="env-card">
+            <div class="env-video media-placeholder" aria-label="Video placeholder"></div>
+            <div class="env-foot">
+              <span class="env-name">Environment 3</span>
+              <button class="env-next" type="button">Next ▸</button>
+            </div>
+          </article>
+          <article class="env-card">
+            <div class="env-video media-placeholder" aria-label="Video placeholder"></div>
+            <div class="env-foot">
+              <span class="env-name">Environment 4</span>
+              <button class="env-next" type="button">Next ▸</button>
+            </div>
+          </article>
+          <article class="env-card">
+            <div class="env-video media-placeholder" aria-label="Video placeholder"></div>
+            <div class="env-foot">
+              <span class="env-name">Environment 5</span>
+              <button class="env-next" type="button">Next ▸</button>
+            </div>
+          </article>
+        </div>
+        <button class="carousel-arrow carousel-next" type="button" aria-label="Next">›</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= DATA COLLECTION ======================= -->
+  <section id="data-collection" class="panel">
+    <div class="panel-inner">
+      <h2 class="section-title">Portable Data Collection</h2>
+
+      <div class="backpack" id="backpack" data-step="0">
+        <div class="backpack-text">
+          <h3>Headline goes here.</h3>
+          <p class="backpack-cta">Click to reveal ↗</p>
+        </div>
+        <div class="backpack-images">
+          <div class="bag-closed media-placeholder placeholder-square" aria-label="Closed-state image placeholder"></div>
+          <div class="bag-open   media-placeholder placeholder-square" aria-label="Open-state image placeholder"></div>
+        </div>
+        <div class="backpack-video">
+          <div id="bag-video" class="media-placeholder" aria-label="Video placeholder"></div>
+        </div>
+      </div>
+
+      <div class="dc-compare">
+        <article class="dc-card">
+          <div class="dc-video">
+            <span class="dc-label dc-label-primary">Label A</span>
+            <div class="media-placeholder" aria-label="Video placeholder"></div>
+          </div>
+          <div class="dc-stats">
+            <div class="dc-num">—</div>
+            <div class="dc-stat-label">Metric Label</div>
+            <div class="dc-stat-sub">sub-label / unit</div>
+          </div>
+        </article>
+        <article class="dc-card">
+          <div class="dc-video">
+            <span class="dc-label dc-label-dark">Label B</span>
+            <div class="media-placeholder" aria-label="Video placeholder"></div>
+          </div>
+          <div class="dc-stats">
+            <div class="dc-num dc-num-muted">—</div>
+            <div class="dc-stat-label">Metric Label</div>
+            <div class="dc-stat-sub">sub-label / unit</div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= ABSTRACT ======================= -->
+  <section id="abstract" class="panel panel-text" aria-label="Abstract section">
+    <div class="abstract-inner">
+      <h2 class="section-title">Abstract</h2>
+      <p class="abstract-text">
+        [Your abstract goes here. Replace this paragraph with a concise summary of your
+        project — the problem, your approach, key results, and takeaways.]
+      </p>
+    </div>
+  </section>
+
+  <!-- ======================= TEASER IMAGE ======================= -->
+  <section class="panel panel-teaser-image">
+    <div class="teaser-image-wrap">
+      <div class="media-placeholder placeholder-wide" aria-label="Teaser image placeholder"></div>
+    </div>
+  </section>
+
+  <!-- ======================= BIBTEX ======================= -->
+  <section id="bibtex" class="panel panel-cite">
+    <div class="cite-inner">
+      <h2 class="section-title">BibTeX</h2>
+      <div class="cite-wrap">
+        <button class="cite-copy" type="button" data-copy-target="#bibtex-code" aria-label="Copy BibTeX">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M16 1H4a2 2 0 0 0-2 2v14h2V3h12V1Zm3 4H8a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2Zm0 16H8V7h11v14Z"/></svg>
+        </button>
+<pre id="bibtex-code" class="cite-code">@article{citekey,
+  title={Your Paper Title Goes Here},
+  author={Last, First and Last, First and Last, First},
+  journal={Venue / arXiv preprint arXiv:XXXX.XXXXX},
+  year={YYYY}
+}</pre>
+      </div>
+    </div>
+  </section>
+
+  <script src="app.js"></script>
+</body>
+</html>
