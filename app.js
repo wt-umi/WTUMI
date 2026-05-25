@@ -13,25 +13,44 @@
     }, { threshold: 0 }).observe(trigger);
   }
 
-  const sectionRatios = new Map();
-  const sectionObs = new IntersectionObserver(entries => {
-    for (const e of entries) {
-      const id = e.target.id;
-      if (e.isIntersecting) sectionRatios.set(id, e.intersectionRatio);
-      else                  sectionRatios.delete(id);
-    }
-    if (!sectionRatios.size) return;
-    let active = null, maxRatio = -1;
-    for (const [id, r] of sectionRatios) {
-      if (r > maxRatio) { maxRatio = r; active = id; }
-    }
-    navLinks.forEach(l => l.classList.toggle('active', l.dataset.section === active));
-  }, { threshold: [0, .15, .3, .45, .6, .75, .9, 1] });
+  // Position-based scroll-spy: the active section is the one whose top
+  // edge has most recently crossed (downward) a reference line at 30%
+  // of viewport height. Robust against tall sections and fast scrolls.
+  const sectionIds = ['capabilities', 'generalization', 'data-collection',
+                      'abstract', 'framework', 'hardware', 'results', 'bibtex'];
+  const sections = sectionIds
+    .map(id => document.getElementById(id))
+    .filter(Boolean);
 
-  ['capabilities', 'generalization', 'data-collection', 'abstract', 'bibtex'].forEach(id => {
-    const el = document.getElementById(id);
-    if (el) sectionObs.observe(el);
-  });
+  const setActive = (id) => {
+    navLinks.forEach(l => l.classList.toggle('active', l.dataset.section === id));
+  };
+
+  const findActive = () => {
+    const triggerY = window.innerHeight * 0.30;
+    let best = null, bestTop = -Infinity;
+    for (const sec of sections) {
+      const top = sec.getBoundingClientRect().top;
+      if (top <= triggerY && top > bestTop) {
+        bestTop = top;
+        best = sec;
+      }
+    }
+    if (best)  setActive(best.id);
+    else       navLinks.forEach(l => l.classList.remove('active'));
+  };
+
+  let rafPending = false;
+  const schedule = () => {
+    if (rafPending) return;
+    rafPending = true;
+    requestAnimationFrame(() => { rafPending = false; findActive(); });
+  };
+
+  window.addEventListener('scroll', schedule, { passive: true });
+  window.addEventListener('resize', schedule);
+  window.addEventListener('load',   schedule); // re-check after images settle
+  findActive();
 
   /* ----------------------------------------------------------
      2. Capabilities — Next button cycles through child videos

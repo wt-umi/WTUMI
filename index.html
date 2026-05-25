@@ -32,6 +32,18 @@
       <span class="nav-text">Abstract</span>
       <span class="nav-dot" aria-hidden="true"></span>
     </a>
+    <a class="nav-item" href="#framework" data-section="framework">
+      <span class="nav-text">Framework</span>
+      <span class="nav-dot" aria-hidden="true"></span>
+    </a>
+    <a class="nav-item" href="#hardware" data-section="hardware">
+      <span class="nav-text">Hardware</span>
+      <span class="nav-dot" aria-hidden="true"></span>
+    </a>
+    <a class="nav-item" href="#results" data-section="results">
+      <span class="nav-text">Results</span>
+      <span class="nav-dot" aria-hidden="true"></span>
+    </a>
     <a class="nav-item" href="#bibtex" data-section="bibtex">
       <span class="nav-text">Cite</span>
       <span class="nav-dot" aria-hidden="true"></span>
@@ -82,34 +94,36 @@
   <!-- ======================= CAPABILITIES ======================= -->
   <section id="capabilities" class="panel">
     <div class="panel-inner">
-      <h2 class="section-title">Whole-Body Capabilities</h2>
+      <h2 class="section-title">Whole-Body Manipulation</h2>
       <div class="cap-grid">
         <article class="cap-card">
           <div class="cap-video media-placeholder" aria-label="Video placeholder"></div>
           <div class="cap-foot">
-            <span class="cap-title">Capability 1</span>
-            <button class="cap-next" type="button">Next ▸</button>
+            <span class="cap-title">Task 1</span>
           </div>
         </article>
         <article class="cap-card">
           <div class="cap-video media-placeholder" aria-label="Video placeholder"></div>
           <div class="cap-foot">
-            <span class="cap-title">Capability 2</span>
-            <button class="cap-next" type="button">Next ▸</button>
+            <span class="cap-title">Task 2</span>
           </div>
         </article>
         <article class="cap-card">
           <div class="cap-video media-placeholder" aria-label="Video placeholder"></div>
           <div class="cap-foot">
-            <span class="cap-title">Capability 3</span>
-            <button class="cap-next" type="button">Next ▸</button>
+            <span class="cap-title">Task 3</span>
           </div>
         </article>
         <article class="cap-card">
           <div class="cap-video media-placeholder" aria-label="Video placeholder"></div>
           <div class="cap-foot">
-            <span class="cap-title">Capability 4</span>
-            <button class="cap-next" type="button">Next ▸</button>
+            <span class="cap-title">Task 4</span>
+          </div>
+        </article>
+        <article class="cap-card cap-card-center">
+          <div class="cap-video media-placeholder" aria-label="Video placeholder"></div>
+          <div class="cap-foot">
+            <span class="cap-title">Task 5</span>
           </div>
         </article>
       </div>
@@ -125,38 +139,48 @@
         <button class="carousel-arrow carousel-prev" type="button" aria-label="Previous">‹</button>
         <div class="carousel-track">
           <article class="env-card">
-            <div class="env-video media-placeholder" aria-label="Video placeholder"></div>
+            <div class="env-video env-video-dual">
+              <div class="media-placeholder" aria-label="Video placeholder"></div>
+              <div class="media-placeholder" aria-label="Video placeholder"></div>
+            </div>
             <div class="env-foot">
               <span class="env-name">Environment 1</span>
-              <button class="env-next" type="button">Next ▸</button>
             </div>
           </article>
           <article class="env-card">
-            <div class="env-video media-placeholder" aria-label="Video placeholder"></div>
+            <div class="env-video env-video-dual">
+              <div class="media-placeholder" aria-label="Video placeholder"></div>
+              <div class="media-placeholder" aria-label="Video placeholder"></div>
+            </div>
             <div class="env-foot">
               <span class="env-name">Environment 2</span>
-              <button class="env-next" type="button">Next ▸</button>
             </div>
           </article>
           <article class="env-card">
-            <div class="env-video media-placeholder" aria-label="Video placeholder"></div>
+            <div class="env-video env-video-dual">
+              <div class="media-placeholder" aria-label="Video placeholder"></div>
+              <div class="media-placeholder" aria-label="Video placeholder"></div>
+            </div>
             <div class="env-foot">
               <span class="env-name">Environment 3</span>
-              <button class="env-next" type="button">Next ▸</button>
             </div>
           </article>
           <article class="env-card">
-            <div class="env-video media-placeholder" aria-label="Video placeholder"></div>
+            <div class="env-video env-video-dual">
+              <div class="media-placeholder" aria-label="Video placeholder"></div>
+              <div class="media-placeholder" aria-label="Video placeholder"></div>
+            </div>
             <div class="env-foot">
               <span class="env-name">Environment 4</span>
-              <button class="env-next" type="button">Next ▸</button>
             </div>
           </article>
           <article class="env-card">
-            <div class="env-video media-placeholder" aria-label="Video placeholder"></div>
+            <div class="env-video env-video-dual">
+              <div class="media-placeholder" aria-label="Video placeholder"></div>
+              <div class="media-placeholder" aria-label="Video placeholder"></div>
+            </div>
             <div class="env-foot">
               <span class="env-name">Environment 5</span>
-              <button class="env-next" type="button">Next ▸</button>
             </div>
           </article>
         </div>
@@ -168,7 +192,7 @@
   <!-- ======================= DATA COLLECTION ======================= -->
   <section id="data-collection" class="panel">
     <div class="panel-inner">
-      <h2 class="section-title">Portable Data Collection</h2>
+      <h2 class="section-title">Teleoperation Data Collection</h2>
 
       <div class="backpack" id="backpack" data-step="0">
         <div class="backpack-text">
@@ -216,8 +240,106 @@
     <div class="abstract-inner">
       <h2 class="section-title">Abstract</h2>
       <p class="abstract-text">
-        [Your abstract goes here. Replace this paragraph with a concise summary of your
-        project — the problem, your approach, key results, and takeaways.]
+        Whole-body humanoid manipulation of bulky, deformable, and shared-load objects
+        requires distributed contact sensing and explicit force regulation, yet most
+        imitation policies treat contact force only implicitly. Demonstration sources
+        are often incomplete: human demonstrations capture natural contact forces but
+        not executable robot actions, while teleoperation provides action labels with
+        less natural force regulation. We present <strong>WT-UMI</strong>, a wearable
+        whole-body tactile interface worn by human demonstrators and mounted on the
+        humanoid, providing calibrated observations of tactile images and normal forces
+        across both collection modes. A force-supervised planner predicts end-effector
+        pose chunks and contact-force trajectories with a cross-attention force head.
+        A force-conditioned IK target correction module converts these predictions into
+        contact-aware robot targets, while the predicted force drives a tactile-based
+        admittance controller. On five contact-rich tasks spanning deformable objects,
+        bulky rigid objects, and human–humanoid collaboration, WT-UMI improves success
+        rate by XX.X points and reduces contact-region drift by XX% across four policy
+        backbones.
+      </p>
+    </div>
+  </section>
+
+  <!-- ======================= FRAMEWORK ======================= -->
+  <section id="framework" class="panel">
+    <div class="panel-inner">
+      <h2 class="section-title">Framework</h2>
+      <div class="figure-wrap">
+        <div class="media-placeholder placeholder-wide" aria-label="Framework diagram placeholder"></div>
+      </div>
+      <p class="figure-caption">
+        [Describe your framework / pipeline overview here.]
+      </p>
+    </div>
+  </section>
+
+  <!-- ======================= HARDWARE ======================= -->
+  <section id="hardware" class="panel">
+    <div class="panel-inner">
+      <h2 class="section-title">Hardware</h2>
+      <div class="figure-wrap">
+        <img src="assets/figures/diagram_v7.png" alt="WT-UMI hardware diagram"/>
+      </div>
+      <p class="figure-caption">
+        [Describe the hardware setup — sensors, mounts, calibration, etc.]
+      </p>
+    </div>
+  </section>
+
+  <!-- ======================= RESULTS ======================= -->
+  <section id="results" class="panel">
+    <div class="panel-inner">
+      <h2 class="section-title">Results</h2>
+
+      <div class="results-table-wrap">
+        <table class="results-table">
+          <thead>
+            <tr>
+              <th class="th-left">Task / Metric</th>
+              <th>Pi0</th>
+              <th>Psi0</th>
+              <th>ViT-FMT</th>
+              <th>ViT-DiT</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="td-left">Pillow Reorientation (%)</td>
+              <td>XX.X</td><td>XX.X</td><td>XX.X</td><td>XX.X</td>
+            </tr>
+            <tr>
+              <td class="td-left">Yoga Ball (%)</td>
+              <td>XX.X</td><td>XX.X</td><td>XX.X</td><td>XX.X</td>
+            </tr>
+            <tr class="row-divider">
+              <td class="td-left">Bucket (%)</td>
+              <td>XX.X</td><td>XX.X</td><td>XX.X</td><td>XX.X</td>
+            </tr>
+            <tr>
+              <td class="td-left">Average Success Rate (%) <span class="arrow">↑</span></td>
+              <td>XX.X</td><td>XX.X</td><td>XX.X</td><td>XX.X</td>
+            </tr>
+            <tr>
+              <td class="td-left">Motion Smoothness (m/s) <span class="arrow">↓</span></td>
+              <td>X.XX</td><td>X.XX</td><td>X.XX</td><td>X.XX</td>
+            </tr>
+            <tr>
+              <td class="td-left">Contact Region Off-center Drift (mm) <span class="arrow">↓</span></td>
+              <td>X.XX</td><td>X.XX</td><td>X.XX</td><td>X.XX</td>
+            </tr>
+            <tr>
+              <td class="td-left">Time Contact Maintain (s) <span class="arrow">↓</span></td>
+              <td>X.XX</td><td>X.XX</td><td>X.XX</td><td>X.XX</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="figure-caption">
+        Per-task success rate (%) and aggregate position tracking and contact-region drift
+        on five contact-rich whole-body manipulation tasks, <em>N</em> = 20 trials per cell.
+        Aggregate rows are averaged across all five tasks over successful trials. Best per
+        row in <strong>bold</strong>.
       </p>
     </div>
   </section>

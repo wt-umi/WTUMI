@@ -343,13 +343,20 @@ a.hero-author:hover .hero-author-name {
 }
 .cap-next:hover { background: rgba(31, 111, 255, .08); }
 
+/* 5th card: span both columns but keep one-column width, centered */
+.cap-card-center {
+  grid-column: 1 / -1;
+  justify-self: center;
+  width: calc(50% - 1rem); /* matches a single-column card (gap is 2rem) */
+}
+
 /* =========================================================
    Generalization carousel
    ========================================================= */
 .carousel {
   position: relative;
   width: 100%;
-  height: clamp(360px, 50vw, 560px);
+  height: clamp(280px, 32vw, 440px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -364,8 +371,8 @@ a.hero-author:hover .hero-author-name {
   left: 0;
   right: 0;
   margin: auto;
-  width: 75%;
-  max-width: 820px;
+  width: 88%;
+  max-width: 1100px;
   border-radius: 12px;
   overflow: hidden;
   background: #000;
@@ -377,6 +384,18 @@ a.hero-author:hover .hero-author-name {
 .env-video {
   background: #000;
   aspect-ratio: 16/9;
+}
+.env-video-dual {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px;
+  aspect-ratio: 32/9; /* two 16:9 slots side-by-side */
+}
+.env-video-dual > .media-placeholder {
+  aspect-ratio: auto;
+  width: 100%;
+  height: 100%;
+  border-radius: 0;
 }
 .env-video video {
   width: 100%;
@@ -603,6 +622,75 @@ a.hero-author:hover .hero-author-name {
 }
 
 /* =========================================================
+   Figure wrapper + caption (Framework, Hardware, Results)
+   ========================================================= */
+.figure-wrap {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+}
+.figure-wrap img,
+.figure-wrap .media-placeholder {
+  width: 100%;
+  max-width: min(90%, 1000px);
+  border-radius: 10px;
+  display: block;
+}
+.figure-caption {
+  margin: 1rem auto 0;
+  max-width: 80ch;
+  text-align: center;
+  font-size: .95rem;
+  color: var(--ink-soft);
+  line-height: 1.55;
+}
+
+/* =========================================================
+   Results table (academic / booktabs-style)
+   ========================================================= */
+.results-table-wrap {
+  width: 100%;
+  overflow-x: auto;
+  margin: 0 auto;
+  max-width: 1000px;
+}
+.results-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: .95rem;
+  border-top:    2px solid var(--ink);
+  border-bottom: 2px solid var(--ink);
+}
+.results-table thead th {
+  font-weight: 600;
+  text-align: center;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--ink);
+  white-space: nowrap;
+}
+.results-table th.th-left,
+.results-table td.td-left {
+  text-align: left;
+  padding-left: 4px;
+}
+.results-table td {
+  text-align: center;
+  padding: 9px 14px;
+  font-variant-numeric: tabular-nums;
+}
+.results-table tbody tr.row-divider td {
+  border-bottom: 1px solid rgba(0,0,0,.25);
+}
+.results-table tbody tr:hover td {
+  background: rgba(31, 111, 255, .04);
+}
+.results-table .arrow {
+  color: var(--ink-mute);
+  font-weight: 500;
+  margin-left: 2px;
+}
+
+/* =========================================================
    Teaser image
    ========================================================= */
 .panel-teaser-image {
@@ -683,6 +771,7 @@ a.hero-author:hover .hero-author-name {
    ========================================================= */
 @media (max-width: 900px) {
   .cap-grid { grid-template-columns: 1fr; }
+  .cap-card-center { width: 100%; }
   .dc-compare { grid-template-columns: 1fr; }
   .floating-nav { right: 10px; gap: 10px; }
   .nav-text { font-size: 12px; }
@@ -723,6 +812,7 @@ a.hero-author:hover .hero-author-name {
    ========================================================= */
 .cap-video.media-placeholder,
 .env-video.media-placeholder,
+.env-video-dual > .media-placeholder,
 .dc-video > .media-placeholder,
 .backpack-video .media-placeholder {
   background:
