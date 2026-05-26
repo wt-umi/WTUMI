@@ -63,53 +63,44 @@
   });
 
   /* ----------------------------------------------------------
-     3. Generalization carousel — scale/blur side cards,
-        click a side card to bring it forward.
+     3. Generalization — task tabs + object selector.
+        Switching tasks reveals only that task's object buttons
+        and selects the first one. Clicking an object button
+        updates the rollout-speed label (and would swap the
+        video sources once you wire them up).
      ---------------------------------------------------------- */
-  const carousel = document.getElementById('gen-carousel');
-  if (carousel) {
-    const track = carousel.querySelector('.carousel-track');
-    const cards = [...track.querySelectorAll('.env-card')];
-    let active = 0;
+  const taskTabs       = [...document.querySelectorAll('#task-tabs .task-tab')];
+  const objButtons     = [...document.querySelectorAll('#object-buttons .obj-btn')];
+  const speedIndicator = document.getElementById('speed-indicator');
 
-    cards.forEach((card, i) => {
-      card.addEventListener('click', (e) => {
-        if (i === active) return;
-        if (e.target.closest('.env-next')) return;
-        setActive(i);
+  if (taskTabs.length && objButtons.length) {
+    const selectObject = (btn) => {
+      objButtons.forEach(b => b.classList.toggle('is-active', b === btn));
+      if (speedIndicator && btn.dataset.speed) {
+        speedIndicator.textContent = `Rollout Speed: ${btn.dataset.speed}`;
+      }
+      // Hook your per-object video swap here, e.g.:
+      //   document.getElementById('vid-ours').src = `assets/videos/${btn.dataset.task}/ours/${btn.dataset.obj}.mp4`;
+    };
+
+    const switchTask = (task) => {
+      taskTabs.forEach(t => t.classList.toggle('is-active', t.dataset.task === task));
+      let firstVisible = null;
+      objButtons.forEach(btn => {
+        const match = btn.dataset.task === task;
+        btn.hidden = !match;
+        btn.classList.remove('is-active');
+        if (match && !firstVisible) firstVisible = btn;
       });
-      card.querySelector('.env-next')?.addEventListener('click', (e) => {
-        e.stopPropagation();
-        // Hook up per-card video cycling here.
-      });
-    });
+      if (firstVisible) selectObject(firstVisible);
+    };
 
-    function layout() {
-      const total = cards.length;
-      cards.forEach((card, i) => {
-        let dist = i - active;
-        if (dist >  total / 2) dist -= total;
-        if (dist < -total / 2) dist += total;
-        const abs     = Math.abs(dist);
-        const scale   = 1 - abs * 0.10;
-        const opacity = 1 - abs * 0.20;
-        const xOff    = dist * 30;
-        card.style.transform = `translateX(${xOff}%) scale(${scale})`;
-        card.style.opacity   = opacity;
-        card.style.zIndex    = 10 - abs;
-        card.style.filter    = abs === 0 ? 'none' : 'blur(1px) brightness(.8)';
-        card.classList.toggle('active', abs === 0);
-      });
-    }
+    taskTabs.forEach(tab => tab.addEventListener('click', () => switchTask(tab.dataset.task)));
+    objButtons.forEach(btn => btn.addEventListener('click', () => selectObject(btn)));
 
-    function setActive(i) {
-      active = ((i % cards.length) + cards.length) % cards.length;
-      layout();
-    }
-
-    carousel.querySelector('.carousel-prev').addEventListener('click', () => setActive(active - 1));
-    carousel.querySelector('.carousel-next').addEventListener('click', () => setActive(active + 1));
-    layout();
+    const initial = taskTabs.find(t => t.classList.contains('is-active'))?.dataset.task
+                 || taskTabs[0].dataset.task;
+    switchTask(initial);
   }
 
   /* ----------------------------------------------------------

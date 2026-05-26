@@ -312,7 +312,7 @@ a.hero-author:hover .hero-author-name {
 }
 .cap-video {
   background: #000;
-  aspect-ratio: 16/9;
+  aspect-ratio: 9/10; /* portrait — matches the source clips so cropping is minimal */
 }
 .cap-video video {
   width: 100%;
@@ -324,8 +324,9 @@ a.hero-author:hover .hero-author-name {
   padding: 1rem 1.25rem;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   gap: 1rem;
+  text-align: center;
 }
 .cap-title {
   font-size: 1rem;
@@ -351,109 +352,142 @@ a.hero-author:hover .hero-author-name {
 }
 
 /* =========================================================
-   Generalization carousel
+   Generalization — task tabs + object selector + comparison
    ========================================================= */
-.carousel {
-  position: relative;
-  width: 100%;
-  height: clamp(280px, 32vw, 440px);
+.task-intro {
+  max-width: 80ch;
+  margin: 0 auto 2rem;
+  text-align: center;
+  color: var(--ink-soft);
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+.task-tabs {
   display: flex;
-  align-items: center;
   justify-content: center;
+  gap: .25rem;
+  margin: 0 auto 1.25rem;
+  border-bottom: 1px solid var(--line);
 }
-.carousel-track {
+.task-tab {
+  background: transparent;
+  border: 0;
+  border-bottom: 3px solid transparent;
+  padding: .7rem 1.5rem;
+  margin-bottom: -1px;
+  font: 600 1rem var(--sans);
+  color: var(--ink-soft);
+  cursor: pointer;
+  transition: color .2s, border-color .2s;
+}
+.task-tab:hover { color: var(--ink); }
+.task-tab.is-active {
+  color: var(--primary);
+  border-bottom-color: var(--primary);
+}
+
+.object-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: .55rem;
+  margin: 1.25rem auto .75rem;
+}
+.obj-btn {
+  border: 2px solid var(--ink-mute);
+  background: transparent;
+  color: var(--ink-soft);
+  border-radius: 999px;
+  padding: .4rem 1rem;
+  font: 500 .9rem var(--sans);
+  cursor: pointer;
+  transition: background-color .15s, color .15s, transform .12s;
+}
+.obj-btn:hover { transform: translateY(-1px); }
+.obj-btn[data-cat="seen"]   { border-color: #2e9d51; color: #2e9d51; }
+.obj-btn[data-cat="human"]  { border-color: #d4a017; color: #d4a017; }
+.obj-btn[data-cat="unseen"] { border-color: #d83a4d; color: #d83a4d; }
+.obj-btn.is-active[data-cat="seen"]   { background: #2e9d51; color: #fff; }
+.obj-btn.is-active[data-cat="human"]  { background: #d4a017; color: #fff; }
+.obj-btn.is-active[data-cat="unseen"] { background: #d83a4d; color: #fff; }
+.obj-btn[hidden] { display: none; }
+
+.task-legend {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+  margin: .25rem 0 1rem;
+  font-size: .9rem;
+  color: var(--ink-soft);
+}
+.legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: .45rem;
+}
+.legend-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+}
+.legend-seen   { background: #2e9d51; }
+.legend-human  { background: #d4a017; }
+.legend-unseen { background: #d83a4d; }
+
+.speed-indicator {
+  text-align: center;
+  margin: .25rem 0 1.5rem;
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--ink-soft);
+}
+
+.task-compare {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+.task-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.task-col-title {
+  margin: 0 0 .65rem;
+  font-size: .95rem;
+  font-weight: 600;
+  color: var(--ink-soft);
+  text-align: center;
+}
+.task-col-title-primary { color: var(--primary); }
+
+.task-video {
   position: relative;
   width: 100%;
-  height: 100%;
-}
-.env-card {
-  position: absolute;
-  left: 0;
-  right: 0;
-  margin: auto;
-  width: 88%;
-  max-width: 1100px;
-  border-radius: 12px;
+  aspect-ratio: 16/9;
+  border-radius: 10px;
   overflow: hidden;
   background: #000;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, .25);
-  transition: transform .5s ease, opacity .5s ease, filter .5s ease;
-  cursor: pointer;
+  border: 2px solid var(--line);
 }
-.env-card.active { cursor: default; }
-.env-video {
-  background: #000;
-  aspect-ratio: 16/9;
-}
-.env-video-dual {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4px;
-  aspect-ratio: 32/9; /* two 16:9 slots side-by-side */
-}
-.env-video-dual > .media-placeholder {
-  aspect-ratio: auto;
-  width: 100%;
-  height: 100%;
-  border-radius: 0;
-}
-.env-video video {
+.task-col-primary .task-video { border-color: var(--primary); }
+.task-video video {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
 }
-.env-foot {
-  background: #fff;
-  padding: .9rem 1.25rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-}
-.env-name {
-  font-weight: 500;
-  font-size: 1rem;
-}
-.env-next {
-  background: transparent;
-  border: 0;
-  color: var(--primary);
-  font: 500 13px var(--sans);
-  cursor: pointer;
-  padding: 5px 9px;
-  border-radius: 6px;
-  visibility: hidden;
-}
-.env-card.active .env-next { visibility: visible; }
-.env-next:hover { background: rgba(31, 111, 255, .08); }
-
-.carousel-arrow {
+.task-video video:not([src]):not(:has(source[src])) { display: none; }
+.task-video > .media-placeholder {
   position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 20;
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  border: 0;
-  background: rgba(255, 255, 255, .9);
-  color: var(--ink);
-  font-size: 26px;
-  line-height: 1;
-  cursor: pointer;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, .15);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background-color .15s, transform .12s;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  aspect-ratio: auto;
+  border-radius: 0;
 }
-.carousel-arrow:hover {
-  background: #fff;
-  transform: translateY(-50%) scale(1.05);
-}
-.carousel-prev { left: 16px; }
-.carousel-next { right: 16px; }
 
 /* =========================================================
    Data collection: bag animation + compare
@@ -773,6 +807,8 @@ a.hero-author:hover .hero-author-name {
   .cap-grid { grid-template-columns: 1fr; }
   .cap-card-center { width: 100%; }
   .dc-compare { grid-template-columns: 1fr; }
+  .task-compare { grid-template-columns: 1fr; }
+  .task-tab { padding: .6rem 1rem; font-size: .9rem; }
   .floating-nav { right: 10px; gap: 10px; }
   .nav-text { font-size: 12px; }
 
@@ -811,8 +847,7 @@ a.hero-author:hover .hero-author-name {
    .dc-video / .backpack-* backgrounds and aspect rules.
    ========================================================= */
 .cap-video.media-placeholder,
-.env-video.media-placeholder,
-.env-video-dual > .media-placeholder,
+.task-video > .media-placeholder,
 .dc-video > .media-placeholder,
 .backpack-video .media-placeholder {
   background:

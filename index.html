@@ -97,21 +97,30 @@
       <h2 class="section-title">Whole-Body Manipulation</h2>
       <div class="cap-grid">
         <article class="cap-card">
-          <div class="cap-video media-placeholder" aria-label="Video placeholder"></div>
+          <div class="cap-video">
+            <video src="assets/videos/pillow_without_black_bars.mp4"
+                   autoplay muted loop playsinline preload="metadata"></video>
+          </div>
           <div class="cap-foot">
-            <span class="cap-title">Task 1</span>
+            <span class="cap-title">Pillow Reorientation</span>
           </div>
         </article>
         <article class="cap-card">
-          <div class="cap-video media-placeholder" aria-label="Video placeholder"></div>
+          <div class="cap-video">
+            <video src="assets/videos/yoga_ball_without_black_side_bars.mp4"
+                   autoplay muted loop playsinline preload="metadata"></video>
+          </div>
           <div class="cap-foot">
-            <span class="cap-title">Task 2</span>
+            <span class="cap-title">Yoga Ball</span>
           </div>
         </article>
         <article class="cap-card">
-          <div class="cap-video media-placeholder" aria-label="Video placeholder"></div>
+          <div class="cap-video">
+            <video src="assets/videos/bucket_without_black_bars.mp4"
+                   autoplay muted loop playsinline preload="metadata"></video>
+          </div>
           <div class="cap-foot">
-            <span class="cap-title">Task 3</span>
+            <span class="cap-title">Bucket</span>
           </div>
         </article>
         <article class="cap-card">
@@ -130,61 +139,84 @@
     </div>
   </section>
 
-  <!-- ======================= GENERALIZATION (carousel) ======================= -->
+  <!-- ======================= GENERALIZATION (task tabs) ======================= -->
   <section id="generalization" class="panel">
     <div class="panel-inner">
       <h2 class="section-title">In-the-Wild Generalization</h2>
 
-      <div class="carousel" id="gen-carousel">
-        <button class="carousel-arrow carousel-prev" type="button" aria-label="Previous">‹</button>
-        <div class="carousel-track">
-          <article class="env-card">
-            <div class="env-video env-video-dual">
-              <div class="media-placeholder" aria-label="Video placeholder"></div>
-              <div class="media-placeholder" aria-label="Video placeholder"></div>
-            </div>
-            <div class="env-foot">
-              <span class="env-name">Environment 1</span>
-            </div>
-          </article>
-          <article class="env-card">
-            <div class="env-video env-video-dual">
-              <div class="media-placeholder" aria-label="Video placeholder"></div>
-              <div class="media-placeholder" aria-label="Video placeholder"></div>
-            </div>
-            <div class="env-foot">
-              <span class="env-name">Environment 2</span>
-            </div>
-          </article>
-          <article class="env-card">
-            <div class="env-video env-video-dual">
-              <div class="media-placeholder" aria-label="Video placeholder"></div>
-              <div class="media-placeholder" aria-label="Video placeholder"></div>
-            </div>
-            <div class="env-foot">
-              <span class="env-name">Environment 3</span>
-            </div>
-          </article>
-          <article class="env-card">
-            <div class="env-video env-video-dual">
-              <div class="media-placeholder" aria-label="Video placeholder"></div>
-              <div class="media-placeholder" aria-label="Video placeholder"></div>
-            </div>
-            <div class="env-foot">
-              <span class="env-name">Environment 4</span>
-            </div>
-          </article>
-          <article class="env-card">
-            <div class="env-video env-video-dual">
-              <div class="media-placeholder" aria-label="Video placeholder"></div>
-              <div class="media-placeholder" aria-label="Video placeholder"></div>
-            </div>
-            <div class="env-foot">
-              <span class="env-name">Environment 5</span>
-            </div>
-          </article>
-        </div>
-        <button class="carousel-arrow carousel-next" type="button" aria-label="Next">›</button>
+      <p class="task-intro">
+        We evaluate generalization on three representative contact-rich tasks:
+        <em>pivoting, insertion, and lid closing</em>. The first two test
+        generalization to unseen objects within a trained task class; lid closing
+        additionally tests generalization to an unseen task class.
+      </p>
+
+      <!-- Task Tabs -->
+      <div class="task-tabs" id="task-tabs" role="tablist">
+        <button class="task-tab is-active" type="button" role="tab" data-task="pivoting">Pivoting</button>
+        <button class="task-tab" type="button" role="tab" data-task="insertion">Insertion</button>
+        <button class="task-tab" type="button" role="tab" data-task="lid_closing">Lid Closing</button>
+      </div>
+
+      <!-- Object Selector -->
+      <div class="object-buttons" id="object-buttons">
+        <!-- Pivoting objects -->
+        <button class="obj-btn" type="button" data-task="pivoting"    data-obj="p_obj1" data-speed="2x" data-cat="seen">Object 1</button>
+        <button class="obj-btn" type="button" data-task="pivoting"    data-obj="p_obj2" data-speed="4x" data-cat="human">Object 2</button>
+        <button class="obj-btn" type="button" data-task="pivoting"    data-obj="p_obj3" data-speed="2x" data-cat="human">Object 3</button>
+        <button class="obj-btn" type="button" data-task="pivoting"    data-obj="p_obj4" data-speed="2x" data-cat="unseen">Object 4</button>
+        <button class="obj-btn" type="button" data-task="pivoting"    data-obj="p_obj5" data-speed="2x" data-cat="unseen">Object 5</button>
+        <!-- Insertion objects -->
+        <button class="obj-btn" type="button" data-task="insertion"   data-obj="i_obj1" data-speed="4x" data-cat="seen">Object 1</button>
+        <button class="obj-btn" type="button" data-task="insertion"   data-obj="i_obj2" data-speed="4x" data-cat="human">Object 2</button>
+        <button class="obj-btn" type="button" data-task="insertion"   data-obj="i_obj3" data-speed="1x" data-cat="human">Object 3</button>
+        <button class="obj-btn" type="button" data-task="insertion"   data-obj="i_obj4" data-speed="4x" data-cat="unseen">Object 4</button>
+        <button class="obj-btn" type="button" data-task="insertion"   data-obj="i_obj5" data-speed="1x" data-cat="unseen">Object 5</button>
+        <!-- Lid Closing objects -->
+        <button class="obj-btn" type="button" data-task="lid_closing" data-obj="l_obj1" data-speed="8x" data-cat="seen">Object 1</button>
+        <button class="obj-btn" type="button" data-task="lid_closing" data-obj="l_obj2" data-speed="8x" data-cat="human">Object 2</button>
+        <button class="obj-btn" type="button" data-task="lid_closing" data-obj="l_obj3" data-speed="8x" data-cat="unseen">Object 3</button>
+      </div>
+
+      <!-- Legend -->
+      <div class="task-legend">
+        <span class="legend-item"><span class="legend-dot legend-seen"></span> Seen-by-both</span>
+        <span class="legend-item"><span class="legend-dot legend-human"></span> Human-only</span>
+        <span class="legend-item"><span class="legend-dot legend-unseen"></span> Unseen-by-both</span>
+      </div>
+
+      <!-- Speed indicator -->
+      <p class="speed-indicator" id="speed-indicator">Rollout Speed: 2x</p>
+
+      <!-- 3-column comparison: Ours | No Tactile | Robot Only -->
+      <div class="task-compare">
+        <article class="task-col task-col-primary">
+          <h4 class="task-col-title task-col-title-primary">WT-UMI (Ours)</h4>
+          <div class="task-video">
+            <video id="vid-ours" autoplay muted loop playsinline preload="metadata">
+              <!-- <source src="" type="video/mp4"> -->
+            </video>
+            <div class="media-placeholder" aria-label="Video placeholder"></div>
+          </div>
+        </article>
+        <article class="task-col">
+          <h4 class="task-col-title">No Tactile (Baseline)</h4>
+          <div class="task-video">
+            <video id="vid-notactile" autoplay muted loop playsinline preload="metadata">
+              <!-- <source src="" type="video/mp4"> -->
+            </video>
+            <div class="media-placeholder" aria-label="Video placeholder"></div>
+          </div>
+        </article>
+        <article class="task-col">
+          <h4 class="task-col-title">Robot Only (Baseline)</h4>
+          <div class="task-video">
+            <video id="vid-robot" autoplay muted loop playsinline preload="metadata">
+              <!-- <source src="" type="video/mp4"> -->
+            </video>
+            <div class="media-placeholder" aria-label="Video placeholder"></div>
+          </div>
+        </article>
       </div>
     </div>
   </section>
