@@ -272,22 +272,23 @@
     <div class="abstract-inner">
       <h2 class="section-title">Abstract</h2>
       <p class="abstract-text">
-        Whole-body humanoid manipulation of bulky, deformable, and shared-load objects
-        requires distributed contact sensing and explicit force regulation, yet most
-        imitation policies treat contact force only implicitly. Demonstration sources
-        are often incomplete: human demonstrations capture natural contact forces but
-        not executable robot actions, while teleoperation provides action labels with
-        less natural force regulation. We present <strong>WT-UMI</strong>, a wearable
-        whole-body tactile interface worn by human demonstrators and mounted on the
-        humanoid, providing calibrated observations of tactile images and normal forces
-        across both collection modes. A force-supervised planner predicts end-effector
-        pose chunks and contact-force trajectories with a cross-attention force head.
-        A force-conditioned IK target correction module converts these predictions into
-        contact-aware robot targets, while the predicted force drives a tactile-based
-        admittance controller. On five contact-rich tasks spanning deformable objects,
-        bulky rigid objects, and human–humanoid collaboration, WT-UMI improves success
-        rate by XX.X points and reduces contact-region drift by XX% across four policy
-        backbones.
+        Whole-body humanoid manipulation of bulky, deformable, and shared
+        load objects requires distributed contact sensing and explicit force regulation, yet
+        most imitation policies treat contact force only implicitly. Demonstration sources
+        provide complementary modalities with inherent trade-offs: human demonstra
+        tions capture natural contact forces but not robot-executable actions, while teleop
+        eration directly records robot actions but with less natural force regulation. This
+        paper presents WT-UMI, a wearable whole-body tactile interface worn by human 
+        demonstrators or mounted on humanoids, providing accurate observations
+        of tactile images, contact forces, and end-effector poses across both collection
+        modes. We introduce a force-conditioned target-pose correction module that con
+        verts measured human hand trajectories into contact-aware robot targets through
+        learned corrections from measured tactile, pose, and force inputs, and a force
+        supervised planner that predicts end-effector pose chunks and contact-force tra
+        jectories. The predicted contact force serves as the reference for a tactile-based
+        admittance controller. Across five contact-rich tasks spanning deformable objects,
+        bulky rigid objects, and human–humanoid collaboration, WT-UMI improves success rate and 
+        reduces contact-position tracking error over four policy baselines.
       </p>
     </div>
   </section>
@@ -297,10 +298,16 @@
     <div class="panel-inner">
       <h2 class="section-title">Framework</h2>
       <div class="figure-wrap">
-        <div class="media-placeholder placeholder-wide" aria-label="Framework diagram placeholder"></div>
+        <img src="assets/figures/Fig2 v8_draft.png" alt="framework diagram"/>
       </div>
       <p class="figure-caption">
-        [Describe your framework / pipeline overview here.]
+        WTUMI is composed of a four stage pipeline. In <b>data collection</b>, WT-UMI records distributed tactile
+        readings and calibrated contact force from a human operator or via teleoperation on a humanoid
+        robot. In <b>pre-trained target-pose correction</b>, a force-conditioned model learns to correct human
+        target poses into robot-executable actions. In <b>planner training</b>, an action denoiser predicts corrected
+        bimanual pose chunks, while a force head predicts contact-force trajectories. During <b>force-aware
+        deployment</b>, the predicted forces drive a tactile-based admittance controller that regulates target
+        poses. A pre-trained RL policy simultaneously controls lower-body locomotion.
       </p>
     </div>
   </section>
@@ -313,7 +320,18 @@
         <img src="assets/figures/diagram_v7.png" alt="WT-UMI hardware diagram"/>
       </div>
       <p class="figure-caption">
-        [Describe the hardware setup — sensors, mounts, calibration, etc.]
+        WT-UMI is an extensible wearable system for capturing operator motion and distributed tactile feedback. 
+        It integrates tactile sensors on hardware modules shared between human and humanoid: 
+        a chest plate, forearm covers, and handheld GripTacs, which are tactile-instrumented handheld interfaces with interchangeable end-effectors. 
+        By using the same sensing modules for human data collection, robot teleoperation, and robot execution, 
+        WT-UMI reduces the domain gap between demonstration and deployment.
+        WT-UMI supports demonstration collection in two modes, <b>teleoperation mode </b>and human mode. 
+        In <b>teleoperation mode</b>, WT-UMI is mounted on the robot, and an operator streams bimanual pose commands through 
+        a PICO VR headset and two handheld controllers via XRoboToolkit. In <b>human mode</b>,
+        a human operator wears the chest plate, forearm covers, and GripTacs, 
+        with a PICO controller on each GripTac to track the bimanual pose without requiring a robot in the loop. 
+        Both modes stream hand pose, tactile images, and calibrated force measurements; 
+        teleoperation additionally records robot proprioception and VR commands.
       </p>
     </div>
   </section>
