@@ -547,8 +547,8 @@ a.hero-author:hover .hero-author-name {
 .legend-telehuman { background: #2e9d51; }
 .legend-humanonly { background: #d83a4d; }
 
-.task-compare .task-col:nth-child(1) .task-video { border-color: #2e9d51; }
-.task-compare .task-col:nth-child(2) .task-video { border-color: #d83a4d; }
+.task-compare .task-col:nth-child(1) .task-video { border-color: #d83a4d; }
+.task-compare .task-col:nth-child(2) .task-video { border-color: #2e9d51; }
 
 .speed-indicator {
   text-align: center;
