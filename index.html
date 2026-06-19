@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WTUMI</title>
+  <meta name="description" content="" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Sentinel: triggers when scrolled past first 80vh -->
+  <div id="nav-trigger" aria-hidden="true"></div>
+
+  <!-- ======================= FLOATING NAV ======================= -->
+  <nav class="floating-nav" aria-label="Page sections">
+    <a class="nav-item" href="#capabilities" data-section="capabilities">
+      <span class="nav-text">Capabilities</span>
+      <span class="nav-dot" aria-hidden="true"></span>
+    </a>
+    <a class="nav-item" href="#data-collection" data-section="data-collection">
+      <span class="nav-text">Data Collection</span>
+      <span class="nav-dot" aria-hidden="true"></span>
+    </a>
+    <a class="nav-item" href="#policy-comparison" data-section="policy-comparison">
+      <span class="nav-text">Force Planner</span>
+      <span class="nav-dot" aria-hidden="true"></span>
+    </a>
+    <a class="nav-item" href="#abstract" data-section="abstract">
+      <span class="nav-text">Abstract</span>
+      <span class="nav-dot" aria-hidden="true"></span>
+    </a>
+    <a class="nav-item" href="#framework" data-section="framework">
+      <span class="nav-text">Framework</span>
+      <span class="nav-dot" aria-hidden="true"></span>
+    </a>
+    <a class="nav-item" href="#hardware" data-section="hardware">
+      <span class="nav-text">Hardware</span>
+      <span class="nav-dot" aria-hidden="true"></span>
+    </a>
+    <a class="nav-item" href="#target-pose-correction" data-section="target-pose-correction">
+      <span class="nav-text">Pose Correction</span>
+      <span class="nav-dot" aria-hidden="true"></span>
+    </a>
+    <a class="nav-item" href="#force-prediction" data-section="force-prediction">
+      <span class="nav-text">Force Prediction</span>
+      <span class="nav-dot" aria-hidden="true"></span>
+    </a>
+    <a class="nav-item" href="#ik-admittance" data-section="ik-admittance">
+      <span class="nav-text">IK &amp; Admittance</span>
+      <span class="nav-dot" aria-hidden="true"></span>
+    </a>
+    <a class="nav-item" href="#results" data-section="results">
+      <span class="nav-text">Results</span>
+      <span class="nav-dot" aria-hidden="true"></span>
+    </a>
+    <a class="nav-item" href="#bibtex" data-section="bibtex">
+      <span class="nav-text">Cite</span>
+      <span class="nav-dot" aria-hidden="true"></span>
+    </a>
+  </nav>
+
+  <!-- ======================= HERO ======================= -->
+  <section id="hero" class="hero">
+    <video class="hero-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true"
+           src="assets/videos/Intro/LIDAR_Video_EditedClips.mp4"></video>
+    <div class="hero-overlay" aria-hidden="true"></div>
+
+    <div class="hero-content">
+      <h1 class="hero-headline">WT-UMI</h1>
+      <p class="hero-subtitle">
+        Whole-Body Tactile UMI for Force-Supervised Humanoid Manipulation
+      </p>
+
+      <p class="hero-authors">
+        <!-- Add author entries here, e.g.:
+        <a class="hero-author" href="#"><span class="hero-author-name">Author Name</span><span class="hero-author-star">*</span></a>,
+        -->
+      </p>
+
+      <p class="hero-footnote"><span class="hero-footnote-star">*</span> Equal Contribution</p>
+    </div>
+  </section>
+
+  <!-- ======================= TEASER IMAGE ======================= -->
+  <section class="panel panel-teaser-image" style="padding-top: clamp(3rem, 8vw, 6rem);">
+    <div class="teaser-image-wrap">
+      <div style="width:min(65vw, 82ch);">
+        <video src="assets/videos/Whole%20Body%20UMI%20presentation.mp4"
+               controls playsinline preload="metadata"
+               style="width:100%;display:block;border-radius:10px;"></video>
+      </div>
+
+      <div class="hero-buttons hero-buttons--light">
+        <a class="hero-btn hero-btn-disabled" href="#" aria-disabled="true" onclick="event.preventDefault()">
+          <svg class="hero-btn-icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2 2 7l10 5 10-5-10-5Zm0 14L4 12v3l8 4 8-4v-3l-8 4Z"/></svg>
+          Arxiv
+        </a>
+        <a class="hero-btn hero-btn-disabled" href="#" aria-disabled="true" onclick="event.preventDefault()">
+          <svg class="hero-btn-icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6 2a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6H6Zm8 1.5L18.5 8H14V3.5ZM8 13h2.5a1.5 1.5 0 0 1 0 3H9v2H8v-5Zm1 1v1h1.5a.5.5 0 0 0 0-1H9Zm4-1h2.2c.99 0 1.8.81 1.8 1.8v1.4c0 .99-.81 1.8-1.8 1.8H13v-5Zm1 1v3h1.2a.8.8 0 0 0 .8-.8v-1.4a.8.8 0 0 0-.8-.8H14Z"/></svg>
+          Paper
+        </a>
+        <a class="hero-btn hero-btn-disabled" href="#" aria-disabled="true" onclick="event.preventDefault()">
+          <svg class="hero-btn-icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2A10 10 0 0 0 8.84 21.5c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.04 1.53 1.04.89 1.53 2.34 1.09 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.56 9.56 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2Z"/></svg>
+          Code (Coming Soon)
+        </a>
+        <a class="hero-btn" href="#" target="_blank" rel="noopener">
+          <svg class="hero-btn-icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2C7 2 3 3.34 3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5c0-1.66-4-3-9-3Zm0 2c4.42 0 7 1.12 7 1s-2.58 1-7 1-7-1.12-7-1 2.58-1 7-1Zm-7 4.27c1.69.85 4.27 1.23 7 1.23s5.31-.38 7-1.23v3c-1.69.85-4.27 1.23-7 1.23s-5.31-.38-7-1.23v-3Zm0 5.5c1.69.85 4.27 1.23 7 1.23s5.31-.38 7-1.23v3c-1.69.85-4.27 1.23-7 1.23s-5.31-.38-7-1.23v-3Z"/></svg>
+          Dataset
+        </a>
+        <a class="hero-btn" href="assets/WTUMI-Hardware Guide.pdf" target="_blank" rel="noopener">
+          <svg class="hero-btn-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path fill="currentColor" d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6Zm0 2.5L17.5 8H14V4.5ZM8 13h2.5a1.5 1.5 0 0 1 0 3H9v2H8v-5Zm1 1v1h1.5a.5.5 0 0 0 0-1H9Zm4-1h2.2c.99 0 1.8.81 1.8 1.8v1.4c0 .99-.81 1.8-1.8 1.8H13v-5Zm1 1v3h1.2a.8.8 0 0 0 .8-.8v-1.4a.8.8 0 0 0-.8-.8H14Z"/>
+          </svg>
+          Hardware Guide
+        </a>
+        <a class="hero-btn" href="https://github.com/wt-umi/WTUMI-Hardware#" target="_blank" rel="noopener">
+          <svg class="hero-btn-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path fill="currentColor" d="M12 2A10 10 0 0 0 8.84 21.5c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.04 1.53 1.04.89 1.53 2.34 1.09 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.56 9.56 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2Z"/>
+          </svg>
+          Hardware Repo
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= CAPABILITIES ======================= -->
+  <section id="capabilities" class="panel">
+    <div class="panel-inner">
+      <h2 class="section-title">Whole-Body Manipulation</h2>
+      <div class="cap-carousel" id="cap-carousel">
+        <button class="cap-arrow cap-prev" type="button" aria-label="Previous task">‹</button>
+        <div class="cap-track">
+          <article class="cap-card">
+            <div class="cap-video">
+              <video src="assets/videos/whole_body_manipulation/pillow_without_black_bars.mp4"
+                     autoplay muted loop playsinline preload="metadata"></video>
+            </div>
+            <div class="cap-foot">
+              <span class="cap-title">Pillow Reorientation</span>
+            </div>
+          </article>
+          <article class="cap-card">
+            <div class="cap-video">
+              <video src="assets/videos/whole_body_manipulation/yoga_ball_without_black_side_bars.mp4"
+                     autoplay muted loop playsinline preload="metadata"></video>
+            </div>
+            <div class="cap-foot">
+              <span class="cap-title">Yoga Ball</span>
+            </div>
+          </article>
+          <article class="cap-card">
+            <div class="cap-video">
+              <video src="assets/videos/whole_body_manipulation/bucket_without_black_bars.mp4"
+                     autoplay muted loop playsinline preload="metadata"></video>
+            </div>
+            <div class="cap-foot">
+              <span class="cap-title">Bucket</span>
+            </div>
+          </article>
+          <article class="cap-card cap-card--wide">
+            <div class="cap-video">
+              <video src="assets/videos/whole_body_manipulation/beam_transfer.mp4"
+                     autoplay muted loop playsinline preload="metadata"></video>
+            </div>
+            <div class="cap-foot">
+              <span class="cap-title">Beam Transfer</span>
+            </div>
+          </article>
+          <article class="cap-card cap-card--wide">
+            <div class="cap-video">
+              <video src="assets/videos/whole_body_manipulation/table_transfer.mp4"
+                     autoplay muted loop playsinline preload="metadata"></video>
+            </div>
+            <div class="cap-foot">
+              <span class="cap-title">Table Transfer</span>
+            </div>
+          </article>
+        </div>
+        <button class="cap-arrow cap-next" type="button" aria-label="Next task">›</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- DISABLED: Generalization section. Inner comment closers were padded
+       with a space (so the outer wrap stays valid). To restore, unwrap and
+       remove the space from each padded closer. -->
+  <!-- ======================= DATA COLLECTION ======================= -->
+  <section id="data-collection" class="panel">
+    <div class="panel-inner">
+      <h2 class="section-title">Teleoperation Data Collection</h2>
+
+      <div class="dc-grid">
+        <div class="dc-row">
+          <article class="dc-card-g">
+            <video src="assets/videos/Teleoperation/Yogaball from low to high Trial 1.mp4"
+                   autoplay muted loop playsinline preload="metadata"></video>
+            <div class="dc-foot"><span class="dc-title">Yoga Ball</span></div>
+          </article>
+          <article class="dc-card-g">
+            <video src="assets/videos/Teleoperation/Moving Box from low to high.mp4"
+                   autoplay muted loop playsinline preload="metadata"></video>
+            <div class="dc-foot"><span class="dc-title">Moving Box</span></div>
+          </article>
+          <article class="dc-card-g">
+            <video src="assets/videos/Teleoperation/Box reorientate Trial 2.mp4"
+                   autoplay muted loop playsinline preload="metadata"></video>
+            <div class="dc-foot"><span class="dc-title">Box Reorientation</span></div>
+          </article>
+        </div>
+        <div class="dc-row">
+          <article class="dc-card-g">
+            <video src="assets/videos/Teleoperation/Babysitting.mp4"
+                   autoplay muted loop playsinline preload="metadata"></video>
+            <div class="dc-foot"><span class="dc-title">Babysitting</span></div>
+          </article>
+          <article class="dc-card-g">
+            <video src="assets/videos/Teleoperation/BoxUnloading.mp4"
+                   autoplay muted loop playsinline preload="metadata"></video>
+            <div class="dc-foot"><span class="dc-title">Box Unloading</span></div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= GENERALIZATION (task tabs) ======================= -->
+  <section id="policy-comparison" class="panel">
+    <div class="panel-inner">
+      <h2 class="section-title">Force-supervised planner trained on different data sources</h2>
+
+      <!-- <p class="task-intro">
+        We evaluate generalization on three representative contact-rich tasks:
+        <em>pivoting, insertion, and lid closing</em>. The first two test
+        generalization to unseen objects within a trained task class; lid closing
+        additionally tests generalization to an unseen task class.
+      </p> -->
+
+      <div class="task-tabs" id="task-tabs" role="tablist">
+        <!-- <button class="task-tab is-active" type="button" role="tab" data-task="Pillow">Pillow</button> -->
+        <button class="task-tab is-active" type="button" role="tab" data-task="Bucket">Bucket</button>
+        <button class="task-tab" type="button" role="tab" data-task="Yogaball">Yogaball</button>
+      </div>
+
+      <div class="task-legend">
+        <span class="legend-item"><span class="legend-dot legend-telehuman"></span> Teleoperation + Human</span>
+        <span class="legend-item"><span class="legend-dot legend-humanonly"></span> Human Only</span>
+      </div>
+
+      <div id="task-panels">
+
+        <!-- <div class="task-panel is-active" data-task="Pillow">
+          <div class="task-compare">
+            <article class="task-col"><div class="task-video"><video src="assets/videos/Tasks/Pillow/PillowFMT_mix.mp4" autoplay muted loop playsinline preload="metadata"></video></div></article>
+            <article class="task-col"><div class="task-video"><video src="" autoplay muted loop playsinline preload="metadata"></video></div></article>
+          </div>
+        </div> -->
+
+        <div class="task-panel is-active" data-task="Bucket">
+          <div class="task-compare">
+            <article class="task-col"><div class="task-video"><video src="assets/videos/Tasks/Bucket/BucketFMT_mix.mp4" autoplay muted loop playsinline preload="metadata"></video></div></article>
+            <article class="task-col"><div class="task-video"><video src="assets/videos/Tasks/Bucket/BucketFMT_human.mp4" autoplay muted loop playsinline preload="metadata"></video></div></article>
+          </div>
+        </div>
+
+        <div class="task-panel" data-task="Yogaball">
+          <div class="task-compare">
+            <article class="task-col"><div class="task-video"><video src="assets/videos/Tasks/Yogaball/YogaFMT_mix.mp4" autoplay muted loop playsinline preload="metadata"></video></div></article>
+            <article class="task-col"><div class="task-video"><video src="assets/videos/Tasks/Yogaball/YogaFMT_human.mp4" autoplay muted loop playsinline preload="metadata"></video></div></article>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= ABSTRACT ======================= -->
+  <section id="abstract" class="panel panel-text" aria-label="Abstract section">
+    <div class="abstract-inner">
+      <h2 class="section-title">Abstract</h2>
+      <p class="abstract-text">
+        Whole-body humanoid manipulation of bulky, deformable, and shared
+        load objects requires distributed contact sensing and explicit force regulation, yet
+        most imitation policies treat contact force only implicitly. Demonstration sources
+        provide complementary modalities with inherent trade-offs: human demonstra
+        tions capture natural contact forces but not robot-executable actions, while teleop
+        eration directly records robot actions but with less natural force regulation. This
+        paper presents WT-UMI, a wearable whole-body tactile interface worn by human 
+        demonstrators or mounted on humanoids, providing accurate observations
+        of tactile images, contact forces, and end-effector poses across both collection
+        modes. We introduce a force-conditioned target-pose correction module that con
+        verts measured human hand trajectories into contact-aware robot targets through
+        learned corrections from measured tactile, pose, and force inputs, and a force
+        supervised planner that predicts end-effector pose chunks and contact-force tra
+        jectories. The predicted contact force serves as the reference for a tactile-based
+        admittance controller. Across five contact-rich tasks spanning deformable objects,
+        bulky rigid objects, and human–humanoid collaboration, WT-UMI improves success rate and 
+        reduces contact-position tracking error over four policy baselines.
+      </p>
+    </div>
+  </section>
+
+  <!-- ======================= FRAMEWORK ======================= -->
+  <section id="framework" class="panel">
+    <div class="panel-inner">
+      <h2 class="section-title">Framework</h2>
+      <div class="figure-wrap">
+        <img src="assets/figures/Fig2 v8_draft.png" alt="framework diagram"/>
+      </div>
+      <!-- <p class="figure-caption">
+        WTUMI is composed of a four stage pipeline. In <b>data collection</b>, WT-UMI records distributed tactile
+        readings and calibrated contact force from a human operator or via teleoperation on a humanoid
+        robot. In <b>pre-trained target-pose correction</b>, a force-conditioned model learns to correct human
+        target poses into robot-executable actions. In <b>planner training</b>, an action denoiser predicts corrected
+        bimanual pose chunks, while a force head predicts contact-force trajectories. During <b>force-aware
+        deployment</b>, the predicted forces drive a tactile-based admittance controller that regulates target
+        poses. A pre-trained RL policy simultaneously controls lower-body locomotion.
+      </p> -->
+    </div>
+  </section>
+
+  <!-- ======================= HARDWARE ======================= -->
+  <section id="hardware" class="panel">
+    <div class="panel-inner">
+      <h2 class="section-title">Hardware</h2>
+      <div class="figure-wrap">
+        <img src="assets/figures/diagram_v7.png" alt="WT-UMI hardware diagram"/>
+      </div>
+      <!-- <p class="figure-caption">
+        WT-UMI is an extensible wearable system for capturing operator motion and distributed tactile feedback. 
+        It integrates tactile sensors on hardware modules shared between human and humanoid: 
+        a chest plate, forearm covers, and handheld GripTacs, which are tactile-instrumented handheld interfaces with interchangeable end-effectors. 
+        By using the same sensing modules for human data collection, robot teleoperation, and robot execution, 
+        WT-UMI reduces the domain gap between demonstration and deployment.
+        WT-UMI supports demonstration collection in two modes, <b>teleoperation mode </b>and human mode. 
+        In <b>teleoperation mode</b>, WT-UMI is mounted on the robot, and an operator streams bimanual pose commands through 
+        a PICO VR headset and two handheld controllers via XRoboToolkit. In <b>human mode</b>,
+        a human operator wears the chest plate, forearm covers, and GripTacs, 
+        with a PICO controller on each GripTac to track the bimanual pose without requiring a robot in the loop. 
+        Both modes stream hand pose, tactile images, and calibrated force measurements; 
+        teleoperation additionally records robot proprioception and VR commands.
+      </p> -->
+    </div>
+  </section>
+
+  <!-- ======================= TARGET-POSE CORRECTION ======================= -->
+  <section id="target-pose-correction" class="panel">
+    <div class="panel-inner">
+      <h2 class="section-title">Target-Pose Correction</h2>
+      <div class="figure-wrap">
+        <img src="assets/figures/IK%20Correction%20v6.png" alt="Target-pose correction"/>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= FORCE PREDICTION ======================= -->
+  <section id="force-prediction" class="panel">
+    <div class="panel-inner">
+      <h2 class="section-title">Force Prediction Evaluation</h2>
+
+      <div class="results-table-wrap">
+        <table class="results-table">
+          <thead>
+            <tr>
+              <th class="th-left" rowspan="2">Source</th>
+              <th rowspan="2">Force RMSE [N]</th>
+              <th rowspan="2">Lag [ms]</th>
+              <th colspan="2">Force Rate RMS [N/s]</th>
+            </tr>
+            <tr>
+              <th>Measured</th>
+              <th>Predicted</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="td-left">Human</td>
+              <td>1.05</td>
+              <td>68</td>
+              <td>5.86</td>
+              <td>3.74</td>
+            </tr>
+            <tr>
+              <td class="td-left">Teleoperation</td>
+              <td>2.07</td>
+              <td>151</td>
+              <td>30.62</td>
+              <td>19.80</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="figure-wrap" style="margin-top: 2rem;">
+        <img src="assets/figures/force_prediction.png" alt="Force prediction evaluation"
+             style="max-width: min(60%, 600px);"/>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= IK CORRECTION & ADMITTANCE ======================= -->
+  <section id="ik-admittance" class="panel">
+    <div class="panel-inner">
+      <h2 class="section-title">Importance of IK Correction and Admittance Controller</h2>
+
+      <div class="results-table-wrap">
+        <table class="results-table">
+          <thead>
+            <tr>
+              <th class="th-left">Metric</th>
+              <th>Raw Human</th>
+              <th>Raw Teleoperation</th>
+              <th>Human Correction</th>
+              <th>Human Correction + Admittance</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="td-left">Avg. Success Rate (%) <span class="arrow">↑</span></td>
+              <td>Failed</td>
+              <td>85.35</td>
+              <td>89.29</td>
+              <td>96.15</td>
+            </tr>
+            <tr>
+              <td class="td-left">Motion Smoothness (m/s<sup>2</sup>) <span class="arrow">↓</span></td>
+              <td>—</td>
+              <td>1.10</td>
+              <td>1.09</td>
+              <td>1.18</td>
+            </tr>
+            <tr>
+              <td class="td-left">Contact Drift (mm) <span class="arrow">↓</span></td>
+              <td>—</td>
+              <td>18.60</td>
+              <td>18.69</td>
+              <td>12.47</td>
+            </tr>
+            <tr>
+              <td class="td-left">Contact Establishment Time (s) <span class="arrow">↓</span></td>
+              <td>—</td>
+              <td>1.00</td>
+              <td>1.08</td>
+              <td>0.58</td>
+            </tr>
+            <tr>
+              <td class="td-left">Contact Lingering Time (s) <span class="arrow">↓</span></td>
+              <td>—</td>
+              <td>0.12</td>
+              <td>0.10</td>
+              <td>0.14</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= RESULTS ======================= -->
+  <section id="results" class="panel">
+    <div class="panel-inner">
+      <h2 class="section-title">Results</h2>
+
+      <div class="results-table-wrap">
+        <table class="results-table">
+          <thead>
+            <tr>
+              <th class="th-left">Policy</th>
+              <th>Task</th>
+              <th class="sep" colspan="2">Succ. Rate (%) <span class="arrow">↑</span></th>
+              <th class="sep" colspan="2">Cont. Drift (mm) <span class="arrow">↓</span></th>
+              <th class="sep" colspan="2">Cont. Force (N)</th>
+              <th class="sep" colspan="2">Smooth.-Trans. (m/s<sup>2</sup>) <span class="arrow">↓</span></th>
+              <th class="sep" colspan="2">Smooth.-Rot. (rad/s<sup>2</sup>) <span class="arrow">↓</span></th>
+            </tr>
+            <tr>
+              <th class="th-left" colspan="2">Admi. (Ours) →</th>
+              <th class="sep">w/o</th><th>w/</th>
+              <th class="sep">w/o</th><th>w/</th>
+              <th class="sep">w/o</th><th>w/</th>
+              <th class="sep">w/o</th><th>w/</th>
+              <th class="sep">w/o</th><th>w/</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- ViT-FMT -->
+            <tr>
+              <td class="td-left" rowspan="3">ViT-FMT</td>
+              <td>T1</td>
+              <td class="sep"><strong>100</strong></td><td><strong>100</strong></td>
+              <td class="sep">18.12</td><td><strong>15.67</strong></td>
+              <td class="sep">4.77</td><td><strong>5.50</strong></td>
+              <td class="sep">3.14</td><td><strong>2.98</strong></td>
+              <td class="sep">20.29</td><td><strong>18.56</strong></td>
+            </tr>
+            <tr>
+              <td>T2</td>
+              <td class="sep"><strong>100</strong></td><td><strong>100</strong></td>
+              <td class="sep">21.04</td><td><strong>19.44</strong></td>
+              <td class="sep"><strong>0.52</strong></td><td>0.13</td>
+              <td class="sep"><strong>1.87</strong></td><td>1.95</td>
+              <td class="sep"><strong>12.63</strong></td><td>13.61</td>
+            </tr>
+            <tr class="row-divider">
+              <td>T3</td>
+              <td class="sep">80</td><td><strong>92</strong></td>
+              <td class="sep">25.00</td><td><strong>22.08</strong></td>
+              <td class="sep">0.96</td><td><strong>1.61</strong></td>
+              <td class="sep">1.85</td><td><strong>1.29</strong></td>
+              <td class="sep">14.05</td><td><strong>10.38</strong></td>
+            </tr>
+            <!-- ViT-DiT -->
+            <tr>
+              <td class="td-left" rowspan="3">ViT-DiT</td>
+              <td>T1</td>
+              <td class="sep"><strong>52</strong></td><td><strong>52</strong></td>
+              <td class="sep">21.79</td><td><strong>18.00</strong></td>
+              <td class="sep">2.21</td><td><strong>2.57</strong></td>
+              <td class="sep">2.92</td><td><strong>2.54</strong></td>
+              <td class="sep">18.73</td><td><strong>14.97</strong></td>
+            </tr>
+            <tr>
+              <td>T2</td>
+              <td class="sep"><strong>100</strong></td><td><strong>100</strong></td>
+              <td class="sep">21.22</td><td><strong>19.61</strong></td>
+              <td class="sep">0.19</td><td><strong>0.76</strong></td>
+              <td class="sep">4.67</td><td><strong>2.41</strong></td>
+              <td class="sep">25.93</td><td><strong>15.17</strong></td>
+            </tr>
+            <tr class="row-divider">
+              <td>T3</td>
+              <td class="sep"><strong>52</strong></td><td><strong>52</strong></td>
+              <td class="sep">26.22</td><td><strong>22.20</strong></td>
+              <td class="sep"><strong>1.74</strong></td><td>0.93</td>
+              <td class="sep">2.33</td><td><strong>2.05</strong></td>
+              <td class="sep">16.47</td><td><strong>14.79</strong></td>
+            </tr>
+            <!-- pi_0.5 -->
+            <tr>
+              <td class="td-left" rowspan="3">&pi;<sub>0.5</sub></td>
+              <td>T1</td>
+              <td class="sep">88</td><td><strong>92</strong></td>
+              <td class="sep">21.51</td><td><strong>11.78</strong></td>
+              <td class="sep">2.53</td><td><strong>2.80</strong></td>
+              <td class="sep"><strong>4.69</strong></td><td>4.82</td>
+              <td class="sep"><strong>29.33</strong></td><td>29.79</td>
+            </tr>
+            <tr>
+              <td>T2</td>
+              <td class="sep">68</td><td><strong>76</strong></td>
+              <td class="sep">19.78</td><td><strong>15.97</strong></td>
+              <td class="sep"><strong>0.50</strong></td><td><strong>0.50</strong></td>
+              <td class="sep">5.06</td><td><strong>5.03</strong></td>
+              <td class="sep">31.86</td><td><strong>31.22</strong></td>
+            </tr>
+            <tr class="row-divider">
+              <td>T3</td>
+              <td class="sep"><strong>84</strong></td><td>76</td>
+              <td class="sep">20.18</td><td><strong>19.40</strong></td>
+              <td class="sep">2.57</td><td><strong>3.38</strong></td>
+              <td class="sep">4.11</td><td><strong>3.53</strong></td>
+              <td class="sep">27.26</td><td><strong>23.56</strong></td>
+            </tr>
+            <!-- Psi_0 -->
+            <tr>
+              <td class="td-left" rowspan="3">&Psi;<sub>0</sub></td>
+              <td>T1</td>
+              <td class="sep">88</td><td><strong>92</strong></td>
+              <td class="sep">15.80</td><td><strong>13.56</strong></td>
+              <td class="sep"><strong>3.14</strong></td><td>3.03</td>
+              <td class="sep">4.20</td><td><strong>3.27</strong></td>
+              <td class="sep">27.06</td><td><strong>23.01</strong></td>
+            </tr>
+            <tr>
+              <td>T2</td>
+              <td class="sep">89</td><td><strong>96</strong></td>
+              <td class="sep">20.48</td><td><strong>18.69</strong></td>
+              <td class="sep"><strong>2.50</strong></td><td><strong>2.50</strong></td>
+              <td class="sep"><strong>4.94</strong></td><td>5.44</td>
+              <td class="sep"><strong>32.12</strong></td><td>33.04</td>
+            </tr>
+            <tr>
+              <td>T3</td>
+              <td class="sep">0</td><td>0</td>
+              <td class="sep">&ndash;</td><td>&ndash;</td>
+              <td class="sep">&ndash;</td><td>&ndash;</td>
+              <td class="sep">&ndash;</td><td>&ndash;</td>
+              <td class="sep">&ndash;</td><td>&ndash;</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="figure-caption figure-caption--justify">
+        Admittance ablation across all policy backbones over tasks T1 (Yogaball), T2 (Pillow), and T3 (Bucket). Each metric is
+        evaluated without (w/o) and with (w/) our admittance control. The better or tied value is
+        bolded for success rate, contact drift, and motion smoothness.
+      </p>
+    </div>
+  </section>
+
+  <!-- ======================= BIBTEX ======================= -->
+  <section id="bibtex" class="panel panel-cite">
+    <div class="cite-inner">
+      <h2 class="section-title">BibTeX</h2>
+      <div class="cite-wrap">
+        <button class="cite-copy" type="button" data-copy-target="#bibtex-code" aria-label="Copy BibTeX">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M16 1H4a2 2 0 0 0-2 2v14h2V3h12V1Zm3 4H8a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2Zm0 16H8V7h11v14Z"/></svg>
+        </button>
+<pre id="bibtex-code" class="cite-code">@article{wtumi2026,
+  title={WT-UMI: Whole-Body Tactile UMI for Force-Supervised Humanoid Manipulation},
+  author={Anonymous},
+  journal={arXiv preprint arXiv:2606.13232},
+  year={2026}
+}</pre>
+      </div>
+    </div>
+  </section>
+
+  <script src="app.js"></script>
+</body>
+</html>

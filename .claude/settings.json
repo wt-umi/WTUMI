@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ffmpeg -y -ss 1 -i beam_transfer.mp4 -frames:v 1 /tmp/beam.png)",
+      "Bash(ffmpeg -y -ss 1 -i table_transfer.mp4 -frames:v 1 /tmp/table.png)",
+      "Bash(ffmpeg -y -ss 1 -i bucket_without_black_bars.mp4 -frames:v 1 /tmp/bucket.png)",
+      "Read(//tmp/**)",
+      "Bash(ps -p 12948 -o pid,cmd=)",
+      "Bash(kill 12948)",
+      "Bash(lsof -ti:8000)"
+    ]
+  }
+}
