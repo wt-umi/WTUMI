@@ -302,22 +302,21 @@
     <div class="abstract-inner">
       <h2 class="section-title">Abstract</h2>
       <p class="abstract-text">
-        Whole-body humanoid manipulation of bulky, deformable, and shared
-        load objects requires distributed contact sensing and explicit force regulation, yet
-        most imitation policies treat contact force only implicitly. Demonstration sources
-        provide complementary modalities with inherent trade-offs: human demonstra
-        tions capture natural contact forces but not robot-executable actions, while teleop
-        eration directly records robot actions but with less natural force regulation. This
-        paper presents WT-UMI, a wearable whole-body tactile interface worn by human 
-        demonstrators or mounted on humanoids, providing accurate observations
-        of tactile images, contact forces, and end-effector poses across both collection
-        modes. We introduce a force-conditioned target-pose correction module that con
-        verts measured human hand trajectories into contact-aware robot targets through
-        learned corrections from measured tactile, pose, and force inputs, and a force
-        supervised planner that predicts end-effector pose chunks and contact-force tra
-        jectories. The predicted contact force serves as the reference for a tactile-based
-        admittance controller. Across five contact-rich tasks spanning deformable objects,
-        bulky rigid objects, and human–humanoid collaboration, WT-UMI improves success rate and 
+        Whole-body humanoid manipulation of bulky, deformable, and shared-load objects requires
+        distributed contact sensing and explicit force regulation, yet most imitation policies treat
+        contact force only implicitly. On the other hand, different demonstration sources provide
+        complementary modalities with inherent trade-offs: human demonstrations capture natural contact
+        forces but not robot-executable actions, while teleoperation directly records robot actions but
+        with less natural force regulation. This paper presents <b>WT-UMI</b>, a wearable whole-body
+        tactile interface worn by human operators or mounted on humanoids, providing accurate
+        observations of tactile images, contact forces, and end-effector poses across both human
+        demonstration and humanoid teleoperation modes. We introduce a force-conditioned target-pose
+        correction module that converts measured human poses into contact-aware robot targets by
+        learning corrections from teleoperation data. To leverage the natural force interaction in human
+        data, we propose a force-supervised planner that predicts end-effector pose chunks and
+        contact-force trajectories. The predicted contact force serves as the reference for a
+        tactile-based admittance controller. Across five contact-rich tasks spanning deformable objects,
+        bulky rigid objects, and human&ndash;humanoid collaboration, WT-UMI improves success rate and
         reduces contact-position tracking error over four policy baselines.
       </p>
     </div>
@@ -438,8 +437,8 @@
               <th class="sep" colspan="2">Succ. (%)</th>
               <th class="sep" colspan="2">Cont. Drift (mm)</th>
               <th class="sep" colspan="2">Cont. Force (N)</th>
-              <th class="sep" colspan="2">Smooth.-Trans. (m/s<sup>2</sup>)</th>
-              <th class="sep" colspan="2">Smooth.-Rot. (rad/s<sup>2</sup>)</th>
+              <th class="sep" colspan="2">Translational Smoothness (m/s<sup>2</sup>) <span class="arrow">↓</span></th>
+              <th class="sep" colspan="2">Rotational Smoothness (rad/s<sup>2</sup>) <span class="arrow">↓</span></th>
             </tr>
             <tr>
               <th class="th-left">Data →</th>
@@ -498,8 +497,8 @@
               <th class="sep" colspan="2">Succ. Rate (%) <span class="arrow">↑</span></th>
               <th class="sep" colspan="2">Cont. Drift (mm) <span class="arrow">↓</span></th>
               <th class="sep" colspan="2">Cont. Force (N)</th>
-              <th class="sep" colspan="2">Smooth.-Trans. (m/s<sup>2</sup>) <span class="arrow">↓</span></th>
-              <th class="sep" colspan="2">Smooth.-Rot. (rad/s<sup>2</sup>) <span class="arrow">↓</span></th>
+              <th class="sep" colspan="2">Translational Smoothness (m/s<sup>2</sup>) <span class="arrow">↓</span></th>
+              <th class="sep" colspan="2">Rotational Smoothness (rad/s<sup>2</sup>) <span class="arrow">↓</span></th>
             </tr>
             <tr>
               <th class="th-left" colspan="2">Admi. (Ours) →</th>
@@ -786,112 +785,6 @@
 
         </div>
       </div>
-
-      <!-- ===== Translational smoothness bar charts ===== -->
-      <div class="results-charts">
-        <h3 class="charts-title">Translational Smoothness (m/s<sup>2</sup>) <span class="arrow">↓</span></h3>
-
-        <div class="chart-legend">
-          <span class="legend-item"><span class="swatch swatch-wo"></span> w/o admittance</span>
-          <span class="legend-item"><span class="swatch swatch-w"></span> w/ admittance</span>
-        </div>
-
-        <div class="chart-grid">
-
-          <figure class="bar-chart">
-            <div class="plot" style="--max:6">
-              <div class="bars">
-                <div class="bar-group"><div class="bar wo" style="--v:3.14"><span class="bar-val">3.14</span></div><div class="bar w" style="--v:2.98"><span class="bar-val">2.98</span></div></div>
-                <div class="bar-group"><div class="bar wo" style="--v:2.92"><span class="bar-val">2.92</span></div><div class="bar w" style="--v:2.54"><span class="bar-val">2.54</span></div></div>
-                <div class="bar-group"><div class="bar wo" style="--v:4.69"><span class="bar-val">4.69</span></div><div class="bar w" style="--v:4.82"><span class="bar-val">4.82</span></div></div>
-                <div class="bar-group"><div class="bar wo" style="--v:4.20"><span class="bar-val">4.20</span></div><div class="bar w" style="--v:3.27"><span class="bar-val">3.27</span></div></div>
-              </div>
-            </div>
-            <div class="x-axis"><span>ViT-FMT</span><span>ViT-DiT</span><span>&pi;<sub>0.5</sub></span><span>&Psi;<sub>0</sub></span></div>
-            <figcaption>T1 &middot; Yogaball</figcaption>
-          </figure>
-
-          <figure class="bar-chart">
-            <div class="plot" style="--max:6">
-              <div class="bars">
-                <div class="bar-group"><div class="bar wo" style="--v:1.87"><span class="bar-val">1.87</span></div><div class="bar w" style="--v:1.95"><span class="bar-val">1.95</span></div></div>
-                <div class="bar-group"><div class="bar wo" style="--v:4.67"><span class="bar-val">4.67</span></div><div class="bar w" style="--v:2.41"><span class="bar-val">2.41</span></div></div>
-                <div class="bar-group"><div class="bar wo" style="--v:5.06"><span class="bar-val">5.06</span></div><div class="bar w" style="--v:5.03"><span class="bar-val">5.03</span></div></div>
-                <div class="bar-group"><div class="bar wo" style="--v:4.94"><span class="bar-val">4.94</span></div><div class="bar w" style="--v:5.44"><span class="bar-val">5.44</span></div></div>
-              </div>
-            </div>
-            <div class="x-axis"><span>ViT-FMT</span><span>ViT-DiT</span><span>&pi;<sub>0.5</sub></span><span>&Psi;<sub>0</sub></span></div>
-            <figcaption>T2 &middot; Pillow</figcaption>
-          </figure>
-
-          <figure class="bar-chart">
-            <div class="plot" style="--max:6">
-              <div class="bars">
-                <div class="bar-group"><div class="bar wo" style="--v:1.85"><span class="bar-val">1.85</span></div><div class="bar w" style="--v:1.29"><span class="bar-val">1.29</span></div></div>
-                <div class="bar-group"><div class="bar wo" style="--v:2.33"><span class="bar-val">2.33</span></div><div class="bar w" style="--v:2.05"><span class="bar-val">2.05</span></div></div>
-                <div class="bar-group"><div class="bar wo" style="--v:4.11"><span class="bar-val">4.11</span></div><div class="bar w" style="--v:3.53"><span class="bar-val">3.53</span></div></div>
-                <div class="bar-group"><div class="bar wo" style="--v:0"><span class="bar-val">n/a</span></div><div class="bar w" style="--v:0"><span class="bar-val">n/a</span></div></div>
-              </div>
-            </div>
-            <div class="x-axis"><span>ViT-FMT</span><span>ViT-DiT</span><span>&pi;<sub>0.5</sub></span><span>&Psi;<sub>0</sub></span></div>
-            <figcaption>T3 &middot; Bucket</figcaption>
-          </figure>
-
-        </div>
-      </div>
-
-      <!-- ===== Rotational smoothness bar charts ===== -->
-      <div class="results-charts">
-        <h3 class="charts-title">Rotational Smoothness (rad/s<sup>2</sup>) <span class="arrow">↓</span></h3>
-
-        <div class="chart-legend">
-          <span class="legend-item"><span class="swatch swatch-wo"></span> w/o admittance</span>
-          <span class="legend-item"><span class="swatch swatch-w"></span> w/ admittance</span>
-        </div>
-
-        <div class="chart-grid">
-
-          <figure class="bar-chart">
-            <div class="plot" style="--max:35">
-              <div class="bars">
-                <div class="bar-group"><div class="bar wo" style="--v:20.29"><span class="bar-val">20.29</span></div><div class="bar w" style="--v:18.56"><span class="bar-val">18.56</span></div></div>
-                <div class="bar-group"><div class="bar wo" style="--v:18.73"><span class="bar-val">18.73</span></div><div class="bar w" style="--v:14.97"><span class="bar-val">14.97</span></div></div>
-                <div class="bar-group"><div class="bar wo" style="--v:29.33"><span class="bar-val">29.33</span></div><div class="bar w" style="--v:29.79"><span class="bar-val">29.79</span></div></div>
-                <div class="bar-group"><div class="bar wo" style="--v:27.06"><span class="bar-val">27.06</span></div><div class="bar w" style="--v:23.01"><span class="bar-val">23.01</span></div></div>
-              </div>
-            </div>
-            <div class="x-axis"><span>ViT-FMT</span><span>ViT-DiT</span><span>&pi;<sub>0.5</sub></span><span>&Psi;<sub>0</sub></span></div>
-            <figcaption>T1 &middot; Yogaball</figcaption>
-          </figure>
-
-          <figure class="bar-chart">
-            <div class="plot" style="--max:35">
-              <div class="bars">
-                <div class="bar-group"><div class="bar wo" style="--v:12.63"><span class="bar-val">12.63</span></div><div class="bar w" style="--v:13.61"><span class="bar-val">13.61</span></div></div>
-                <div class="bar-group"><div class="bar wo" style="--v:25.93"><span class="bar-val">25.93</span></div><div class="bar w" style="--v:15.17"><span class="bar-val">15.17</span></div></div>
-                <div class="bar-group"><div class="bar wo" style="--v:31.86"><span class="bar-val">31.86</span></div><div class="bar w" style="--v:31.22"><span class="bar-val">31.22</span></div></div>
-                <div class="bar-group"><div class="bar wo" style="--v:32.12"><span class="bar-val">32.12</span></div><div class="bar w" style="--v:33.04"><span class="bar-val">33.04</span></div></div>
-              </div>
-            </div>
-            <div class="x-axis"><span>ViT-FMT</span><span>ViT-DiT</span><span>&pi;<sub>0.5</sub></span><span>&Psi;<sub>0</sub></span></div>
-            <figcaption>T2 &middot; Pillow</figcaption>
-          </figure>
-
-          <figure class="bar-chart">
-            <div class="plot" style="--max:35">
-              <div class="bars">
-                <div class="bar-group"><div class="bar wo" style="--v:14.05"><span class="bar-val">14.05</span></div><div class="bar w" style="--v:10.38"><span class="bar-val">10.38</span></div></div>
-                <div class="bar-group"><div class="bar wo" style="--v:16.47"><span class="bar-val">16.47</span></div><div class="bar w" style="--v:14.79"><span class="bar-val">14.79</span></div></div>
-                <div class="bar-group"><div class="bar wo" style="--v:27.26"><span class="bar-val">27.26</span></div><div class="bar w" style="--v:23.56"><span class="bar-val">23.56</span></div></div>
-                <div class="bar-group"><div class="bar wo" style="--v:0"><span class="bar-val">n/a</span></div><div class="bar w" style="--v:0"><span class="bar-val">n/a</span></div></div>
-              </div>
-            </div>
-            <div class="x-axis"><span>ViT-FMT</span><span>ViT-DiT</span><span>&pi;<sub>0.5</sub></span><span>&Psi;<sub>0</sub></span></div>
-            <figcaption>T3 &middot; Bucket</figcaption>
-          </figure>
-
-        </div>
-      </div>
     </div>
   </section>
 
@@ -907,8 +800,6 @@
   title={{WT-UMI}: Tactile-based Whole-Body Manipulation via Force-Supervised Contact-Aware Planning},
   author={Jang, Jaehwi and Gu, Zhaoyuan and Cueva, Alfred and Chai, Zimeng and Sheng, Junjie and Nguyen, Thong and Galundia, Himank and Wu, Yifan and Xue, Huishu and Legene, Isaac and Mediratta, Ojas and Doan, Davin and Collins, Andrew and Sadegh, Sarah and Kim, KyoungMok and Dhalbisoi, Rishita and Chen, Zun and Zhao, Ye},
   booktitle={Proceedings of the 10th Conference on Robot Learning},
-  series={Proceedings of Machine Learning Research},
-  publisher={PMLR},
   year={2026}
 }</pre>
       </div>
