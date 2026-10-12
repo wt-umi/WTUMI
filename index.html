@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css?v=2" />
 </head>
 <body>
   <!-- Sentinel: triggers when scrolled past first 80vh -->
@@ -49,7 +49,7 @@
       <span class="nav-dot" aria-hidden="true"></span>
     </a>
     <a class="nav-item" href="#ik-admittance" data-section="ik-admittance">
-      <span class="nav-text">IK &amp; Admittance</span>
+      <span class="nav-text">Data Source</span>
       <span class="nav-dot" aria-hidden="true"></span>
     </a>
     <a class="nav-item" href="#results" data-section="results">
@@ -76,8 +76,8 @@
       <p class="hero-venue">Conference on Robot Learning (CoRL) 2026</p>
 
       <p class="hero-authors">
-        <span class="hero-author"><span class="hero-author-name">Jaehwi Jang</span>,</span>
-        <span class="hero-author"><span class="hero-author-name">Zhaoyuan Gu</span>,</span>
+        <span class="hero-author"><span class="hero-author-name">Jaehwi Jang</span><span class="hero-author-star">*</span>,</span>
+        <span class="hero-author"><span class="hero-author-name">Zhaoyuan Gu</span><span class="hero-author-star">*</span>,</span>
         <span class="hero-author"><span class="hero-author-name">Alfred Cueva</span>,</span>
         <span class="hero-author"><span class="hero-author-name">Zimeng Chai</span>,</span>
         <span class="hero-author"><span class="hero-author-name">Junjie Sheng</span>,</span>
@@ -99,6 +99,8 @@
       <div class="hero-affiliations">
         <img class="hero-affiliation-logo" src="assets/logos/georgia-tech.svg" alt="Georgia Institute of Technology">
       </div>
+
+      <p class="hero-footnote"><span class="hero-footnote-star">*</span> Equal Contribution</p>
 
     </div>
   </section>
@@ -411,6 +413,10 @@
           </tbody>
         </table>
       </div>
+      <p class="figure-caption">
+        Force signal quality. Human demonstrations exhibit more accurate and smoother force profiles than
+        teleoperation, improving the quality of supervision for learning.
+      </p>
 
       <div class="figure-wrap" style="margin-top: 2rem;">
         <img src="assets/figures/force_prediction.png" alt="Force prediction evaluation"
@@ -419,61 +425,62 @@
     </div>
   </section>
 
-  <!-- ======================= IK CORRECTION & ADMITTANCE ======================= -->
+  <!-- ======================= DATA SOURCE ======================= -->
   <section id="ik-admittance" class="panel">
     <div class="panel-inner">
-      <h2 class="section-title">Importance of IK Correction and Admittance Controller</h2>
+      <h2 class="section-title">Effect of Data Source</h2>
 
       <div class="results-table-wrap">
         <table class="results-table">
           <thead>
             <tr>
-              <th class="th-left">Metric</th>
-              <th>Raw Human</th>
-              <th>Raw Teleoperation</th>
-              <th>Human Correction</th>
-              <th>Human Correction + Admittance</th>
+              <th class="th-left">Task</th>
+              <th class="sep" colspan="2">Succ. (%)</th>
+              <th class="sep" colspan="2">Cont. Drift (mm)</th>
+              <th class="sep" colspan="2">Cont. Force (N)</th>
+              <th class="sep" colspan="2">Smooth.-Trans. (m/s<sup>2</sup>)</th>
+              <th class="sep" colspan="2">Smooth.-Rot. (rad/s<sup>2</sup>)</th>
+            </tr>
+            <tr>
+              <th class="th-left">Data →</th>
+              <th class="sep">Tel.</th><th>Comb.</th>
+              <th class="sep">Tel.</th><th>Comb.</th>
+              <th class="sep">Tel.</th><th>Comb.</th>
+              <th class="sep">Tel.</th><th>Comb.</th>
+              <th class="sep">Tel.</th><th>Comb.</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td class="td-left">Avg. Success Rate (%) <span class="arrow">↑</span></td>
-              <td>Failed</td>
-              <td>85.35</td>
-              <td>89.29</td>
-              <td><strong>96.15</strong></td>
+              <td class="td-left">T1</td>
+              <td class="sep"><strong>100.0</strong></td><td><strong>100.0</strong></td>
+              <td class="sep">20.41</td><td><strong>18.12</strong></td>
+              <td class="sep">3.27</td><td><strong>4.77</strong></td>
+              <td class="sep">4.08</td><td><strong>3.14</strong></td>
+              <td class="sep">22.93</td><td><strong>20.29</strong></td>
             </tr>
             <tr>
-              <td class="td-left">Motion Smoothness (m/s<sup>2</sup>) <span class="arrow">↓</span></td>
-              <td>—</td>
-              <td>1.10</td>
-              <td><strong>1.09</strong></td>
-              <td>1.18</td>
+              <td class="td-left">T2</td>
+              <td class="sep"><strong>100.0</strong></td><td><strong>100.0</strong></td>
+              <td class="sep">24.61</td><td><strong>21.04</strong></td>
+              <td class="sep">0.17</td><td><strong>0.52</strong></td>
+              <td class="sep">6.03</td><td><strong>1.87</strong></td>
+              <td class="sep">34.54</td><td><strong>12.63</strong></td>
             </tr>
             <tr>
-              <td class="td-left">Contact Drift (mm) <span class="arrow">↓</span></td>
-              <td>—</td>
-              <td>18.60</td>
-              <td>18.69</td>
-              <td><strong>12.47</strong></td>
-            </tr>
-            <tr>
-              <td class="td-left">Contact Establishment Time (s) <span class="arrow">↓</span></td>
-              <td>—</td>
-              <td>1.00</td>
-              <td>1.08</td>
-              <td><strong>0.58</strong></td>
-            </tr>
-            <tr>
-              <td class="td-left">Contact Lingering Time (s) <span class="arrow">↓</span></td>
-              <td>—</td>
-              <td>0.12</td>
-              <td><strong>0.10</strong></td>
-              <td>0.14</td>
+              <td class="td-left">T3</td>
+              <td class="sep">60.0</td><td><strong>80.0</strong></td>
+              <td class="sep">26.01</td><td><strong>25.00</strong></td>
+              <td class="sep">0.66</td><td><strong>0.96</strong></td>
+              <td class="sep">3.49</td><td><strong>1.85</strong></td>
+              <td class="sep">27.82</td><td><strong>14.05</strong></td>
             </tr>
           </tbody>
         </table>
       </div>
+      <p class="figure-caption">
+        Effect of data source over tasks <strong>T1</strong>&ndash;<strong>T3</strong>. Best values are highlighted in bold.
+      </p>
     </div>
   </section>
 
@@ -896,10 +903,12 @@
         <button class="cite-copy" type="button" data-copy-target="#bibtex-code" aria-label="Copy BibTeX">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M16 1H4a2 2 0 0 0-2 2v14h2V3h12V1Zm3 4H8a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2Zm0 16H8V7h11v14Z"/></svg>
         </button>
-<pre id="bibtex-code" class="cite-code">@article{wtumi2026,
-  title={WT-UMI: Tactile-based Whole-Body Manipulation via Force-Supervised Contact-Aware Planning},
+<pre id="bibtex-code" class="cite-code">@inproceedings{jang2026wtumi,
+  title={{WT-UMI}: Tactile-based Whole-Body Manipulation via Force-Supervised Contact-Aware Planning},
   author={Jang, Jaehwi and Gu, Zhaoyuan and Cueva, Alfred and Chai, Zimeng and Sheng, Junjie and Nguyen, Thong and Galundia, Himank and Wu, Yifan and Xue, Huishu and Legene, Isaac and Mediratta, Ojas and Doan, Davin and Collins, Andrew and Sadegh, Sarah and Kim, KyoungMok and Dhalbisoi, Rishita and Chen, Zun and Zhao, Ye},
-  journal={arXiv preprint arXiv:2606.13232},
+  booktitle={Proceedings of the 10th Conference on Robot Learning},
+  series={Proceedings of Machine Learning Research},
+  publisher={PMLR},
   year={2026}
 }</pre>
       </div>
