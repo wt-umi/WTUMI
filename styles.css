@@ -154,6 +154,15 @@ img, video { max-width: 100%; display: block; }
   line-height: 1.25;
   white-space: nowrap;
 }
+.hero-venue {
+  margin: .5rem 0 0;
+  color: rgba(255, 255, 255, .9);
+  font-weight: 600;
+  font-size: clamp(1rem, 1.7vw, 1.6rem);
+  line-height: 1.25;
+  letter-spacing: .01em;
+  text-wrap: balance;
+}
 .hero-authors {
   width: min(95%, 900px);
   margin: 1.25rem 0 0;
@@ -169,16 +178,30 @@ img, video { max-width: 100%; display: block; }
 }
 .hero-author-name {
   display: inline-block;
-  padding: 0 .2em;
   border-radius: .25em;
   transition: background-color .15s ease;
 }
+a.hero-author .hero-author-name { padding: 0 .2em; }
 a.hero-author:hover .hero-author-name {
   background-color: rgba(120, 190, 255, .3);
   text-decoration: underline;
 }
 .hero-author-star {
   color: rgba(255, 255, 255, .9);
+}
+.hero-affiliations {
+  margin: 1rem 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+.hero-affiliation-logo {
+  display: block;
+  height: clamp(2.25rem, 4vw, 3.25rem);
+  width: auto;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, .45));
 }
 .hero-footnote {
   margin: .25rem 0 0;
